@@ -1,0 +1,14 @@
+.item{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between
+  }
+
+.test{
+    
+    margin-top: 40vh;
+    
+}
+.button{
+    width: 100%;
+}
