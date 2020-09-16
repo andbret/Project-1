@@ -7,7 +7,21 @@
     <title>Hello Bulma!</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
-
+    <style>
+        /* gotham fonts with multiple sources for browser compatability */
+      @font-face {
+          font-family: gotham-book;
+          src: url("gotham-book.oft") format("opentype"), /* Original File */
+          url("gotham-book.woff") format("woff"), /* Modern Browsers */
+          url("gotham-book.ttf")  format("truetype"); /* Safari, Android, iOS */
+       }
+       @font-face {
+          font-family: gotham-black;
+          src: url("gotham-black.otf") format("opentype"), /* Original File */
+          url("gotham-black.woff") format("woff"), /* Modern Browsers */
+          url("gotham-black.ttf")  format("truetype"); /* Safari, Android, iOS */
+       }
+      </style>
 </head>
 
 <body>
@@ -18,18 +32,19 @@
                
             <div class="columns">
                 <div class="column is-half">
-                    <h1 class="title">
-                        Hello World
+                    <h1 class="title" style="font-family:gotham-black; font-size: 47px">
+                        Had a snack? Let's help you burn it off.
                     </h1>
-                    <p>
-                        I'm baby glossier messenger bag bitters squid sartorial chillwave woke kombucha. Af brunch banh mi meh PBR&B banjo pok pok, vexillologist vegan adaptogen small batch bespoke kickstarter helvetica lo-fi. PBR&B 90's keytar ramps skateboard forage butcher meditation. Typewriter chartreuse messenger bag photo booth
+                    <p style="font-family:gotham-book;">
+                        I'm baby glossier messenger bag bitters squid sartorial chillwave woke kombucha. Af brunch banh mi meh PBR&B banjo pok pok, vexillologist vegan adaptogen small batch bespoke kickstarter helvetica lo-fi.
                     </p>
+                    
 
                 </div>
 
-                <div class="column is-half item test">
-                    <div class="container">
-                        <div class="field ">
+                <div class="column is-half item">
+                    <div class="test ">
+                        <div class="field">
                             <!-- <label class="label">Name</label> -->
                             <div class="control">
                                 <input class="input is-large" type="text" placeholder="What was your snack?" id= "snack">

@@ -1,3 +1,19 @@
+@font-face {
+    font-family: gotham-book;
+    src: url("../gotham-book.oft") format("opentype"),
+    url("../gotham-book.woff") format("woff"), /* Modern Browsers */
+    url("../gotham-book.ttf")  format("truetype"); /* Safari, Android, iOS */
+  }
+  @font-face {
+    font-family: gotham-black;
+    src: url("../gotham-black.otf") format("opentype"),
+    url("../gotham-black.woff") format("woff"), /* Modern Browsers */
+    url("../gotham-black.ttf")  format("truetype"); /* Safari, Android, iOS */
+  }
+  .title{
+    font-size: 40px;
+  }
+
 .item{
     display:flex;
     flex-direction:column;
@@ -5,8 +21,10 @@
   }
 
 .test{
-    
-    margin-top: 40vh;
+    position: fixed;
+    bottom: 20px; 
+    padding: 30px;
+  
     
 }
 .button{
