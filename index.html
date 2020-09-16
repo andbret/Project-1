@@ -9,72 +9,77 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
     <style>
         /* gotham fonts with multiple sources for browser compatability */
-      @font-face {
-          font-family: gotham-book;
-          src: url("gotham-book.oft") format("opentype"), /* Original File */
-          url("gotham-book.woff") format("woff"), /* Modern Browsers */
-          url("gotham-book.ttf")  format("truetype"); /* Safari, Android, iOS */
-       }
-       @font-face {
-          font-family: gotham-black;
-          src: url("gotham-black.otf") format("opentype"), /* Original File */
-          url("gotham-black.woff") format("woff"), /* Modern Browsers */
-          url("gotham-black.ttf")  format("truetype"); /* Safari, Android, iOS */
-       }
-      </style>
+        @font-face {
+            font-family: gotham-book;
+            src: url("gotham-book.oft") format("opentype"),
+                /* Original File */
+                url("gotham-book.woff") format("woff"),
+                /* Modern Browsers */
+                url("gotham-book.ttf") format("truetype");
+            /* Safari, Android, iOS */
+        }
+
+        @font-face {
+            font-family: gotham-black;
+            src: url("gotham-black.otf") format("opentype"),
+                /* Original File */
+                url("gotham-black.woff") format("woff"),
+                /* Modern Browsers */
+                url("gotham-black.ttf") format("truetype");
+            /* Safari, Android, iOS */
+        }
+    </style>
 </head>
 
-<body>
+<body class="background">
     <section class="section">
         <div class="container">
 
-            
-               
-            <div class="columns">
+
+
+            <div class="columns is-full-height">
                 <div class="column is-half">
                     <h1 class="title" style="font-family:gotham-black; font-size: 47px">
                         Had a snack? Let's help you burn it off.
                     </h1>
                     <p style="font-family:gotham-book;">
-                        I'm baby glossier messenger bag bitters squid sartorial chillwave woke kombucha. Af brunch banh mi meh PBR&B banjo pok pok, vexillologist vegan adaptogen small batch bespoke kickstarter helvetica lo-fi.
+                        I'm baby glossier messenger bag bitters squid sartorial chillwave woke kombucha. Af brunch banh
+                        mi meh PBR&B banjo pok pok, vexillologist vegan adaptogen small batch bespoke kickstarter
+                        helvetica lo-fi.
                     </p>
                     
 
-                </div>
 
-                <div class="column is-half item">
-                    <div class="test ">
+                </div>
+              
+                <div class="column is-half is-full-height">
+                    <div class="test">
                         <div class="field">
                             <!-- <label class="label">Name</label> -->
                             <div class="control">
-                                <input class="input is-large" type="text" placeholder="What was your snack?" id= "snack">
+                                <input class="input is-medium" type="text" placeholder="What was your snack?" id="snack">
                             </div>
                         </div>
 
                         <div class="field">
                             <!-- <label class="label">Email</label> -->
                             <div class="control">
-                                <input class="input is-large" type="text" placeholder="What is your body weight?" id = "weight">
+                                <input class="input is-medium" type="text" placeholder="What is your body weight?"
+                                    id="weight">
                             </div>
                         </div>
 
 
 
-                        <div class="field is-grouped">
-                            <p class="control is-expanded">
-                                <label class="label">Where are you?</label>
-                                <input class="input is-large" type="text" placeholder="City" id = "city">
-                            </p>
-                            <p class="control is-expanded">
-                                <label class="label">&nbsp;</label>
-
-                                <input class="input is-large" type="text" placeholder="State" id = "state">
-
-                                </a>
-                            </p>
+                        <div class="field">
+                            <!-- <label class="label">Email</label> -->
+                            <div class="control">
+                                <input class="input is-medium" type="text" placeholder="What is your ZIP code?"
+                                    id="zip">
+                            </div>
                         </div>
                         <p class="control is-expanded">
-                            <button class="button is-primary is-large">Submit</button>
+                            <button class="button is-info is-medium">Submit</button>
                         </p>
 
 
@@ -84,9 +89,11 @@
                 </div>
             </div>
 
-            
+
         </div>
+
     </section>
+
 </body>
 
 </html>

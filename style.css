@@ -10,23 +10,45 @@
     url("../gotham-black.woff") format("woff"), /* Modern Browsers */
     url("../gotham-black.ttf")  format("truetype"); /* Safari, Android, iOS */
   }
+
   .title{
     font-size: 40px;
   }
 
-.item{
+.column{
+    /* height : 90%vh; */
+    position: relative;
     display:flex;
     flex-direction:column;
-    justify-content:space-between
+    align-items: stretch;
+    
   }
 
 .test{
-    position: fixed;
-    bottom: 20px; 
-    padding: 30px;
+    /* background-color: coral; */
+    /* height : 90%vh; */
+    /* align-items: stretch; */
+    /* position: fixed; */
+    position:absolute;
+    bottom:10px;
+    width:100%;
+    padding: 10px;
+   
+    
   
     
 }
 .button{
     width: 100%;
 }
+html {
+    background-image: url("background11.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: bottom;
+    background-size: 100% auto;
+  }
+ 
+  .is-full-height{
+    height: 90vh;
+  }
