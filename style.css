@@ -19,13 +19,14 @@
     position: relative;
     display:flex;
     flex-direction:column;
-    align-items: stretch;
+    align-items: center;
     
   }
 
 .test{
 
     position:absolute;
+    align-items: flex-end;
     bottom:10px;
     width:95%;
     padding: 10px;
@@ -48,3 +49,16 @@ html {
   .is-full-height{
     height: 90vh;
   }
+
+  .main {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+ .pill{
+   background-color: rgb(48, 157, 207);
+   padding:8px;
+   border-radius: 20px;
+   color: azure;
+ }

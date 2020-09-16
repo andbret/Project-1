@@ -6,7 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hello Bulma!</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"> -->
+    <link rel="stylesheet" href="bulma/css/bulma.css">
+
+
+
+
     <style>
         /* gotham fonts with multiple sources for browser compatability */
         @font-face {
@@ -65,7 +70,7 @@
                         <div class="field">
                             <!-- <label class="label">Email</label> -->
                             <div class="control">
-                                <input class="input is-medium" type="text" placeholder="What is your body weight?"
+                                <input class="input is-medium" type="text" placeholder="How much do you weigh?"
                                     id="weight">
                             </div>
                         </div>
@@ -88,12 +93,18 @@
 
                     </div>
                 </div>
+
             </div>
 
 
         </div>
 
+
+
+
+
     </section>
+
     <div class="container" id="app">
         <div id="image-modal" class="modal">
             <div class="modal-background"></div>
@@ -103,57 +114,70 @@
             <p class="modal-card-title">Modal title</p>
           </header> -->
                     <section class="modal-card-body is-variable is-2">
-                        
 
+
+
+                        <img src="placeholder.jpeg" id="placeholer" alt="Girl in a jacket" width="1000" height="300">
+                        <img class="image">
+
+
+                        <p style="font-family:gotham-black; font-size: 18px;" id="flavor-text">
+                            Angels Landing is the perfect hike for you!
+                        </p>
+                        <p style="font-family:gotham-book;" class="explanation">
+                            One of the most memorable National Park hikes. Heavenly views await at the end of an exposed
+                            ridge.
                             
-                                <img src="https://via.placeholder.com/600" alt="Girl in a jacket" width="1000"
-                                    height="300">
-                                    <img class="image">
+                        </p>
+                        <hr>
+                        <div class="columns">
+                            <div class="column is-half">
+                                
+                                <span style="font-family:gotham-black; font-size: 14px;" class="difficulty pill">
+                                    &nbsp;Difficulty: Black&nbsp;
+                                </span>
+                            
+                            </div>
 
-                           
-                                <p style="font-family:gotham-book;" id="flavor-text">
-                                    I'm baby glossier messenger bag bitters squid sartorial chillwave woke kombucha. Af
-                                    brunch banh
-                                    mi meh PBR&B banjo pok pok, vexillologist vegan adaptogen small batch bespoke
-                                    kickstarter
-                                    helvetica lo-fi.
-                                    I'm baby glossier messenger bag bitters squid sartorial chillwave woke kombucha. Af
-                                    brunch banh
-                                    mi meh PBR&B banjo pok pok, vexillologist vegan adaptogen small batch bespoke
-                                    kickstarter
-                                    helvetica lo-fi.
-                                    I'm baby glossier messenger bag bitters squid sartorial chillwave woke kombucha. Af
-                                    brunch banh
-                                    mi meh PBR&B banjo pok pok, vexillologist vegan adaptogen small batch bespoke
-                                    kickstarter
-                                    helvetica lo-fi.
-                                    I'm baby glossier messenger bag bitters squid sartorial chillwave woke kombucha. Af
-                                    brunch banh
-                                    mi meh PBR&B banjo pok pok, vexillologist vegan adaptogen small batch bespoke
-                                    kickstarter
-                                    helvetica lo-fi.
-                                </p>
-                                <p style="font-family:gotham-book;" class="explanation">
-                                </p>
-                                <p style="font-family:gotham-book;" class="difficulty">
-                                </p>
-                                <p style="font-family:gotham-book;" class="rating">
-                                </p>
-                                <p style="font-family:gotham-book;" class="summary">
-                                </p>
-                                <p style="font-family:gotham-book;" class="length">
-                                </p>
-                                <p style="font-family:gotham-book;" class="ascent">
-                                </p>
-                                <p style="font-family:gotham-book;" class="descent">
-                                </p>
-                                <p style="font-family:gotham-book;" class="condition">
-                                </p>
-                                <!-- <button class="button is-success">Save changes</button>
+
+
+                            <div class="column is-half">
+
+                                
+                                    <span style="font-family:gotham-black; font-size: 14px;" class="rating pill">
+                                        &nbsp;4.8 &#9733;&nbsp;
+                                    </span>
+                                 
+
+
+
+
+
+                            </div>
+                        </div>
+
+
+                        <p style="font-family:gotham-book; font-size: 14px;" class="summary">
+                            It will take 8 miles to burn off all 500 calories from that donut.
+                        </p>
+                        <br>
+                        <p style="font-family:gotham-book; font-size: 14px;" class="length">
+                            Length: 8.5 miles
+                        </p>
+                        <p style="font-family:gotham-book; font-size: 14px;" class="ascent">
+                            Ascent: 1390,
+                        </p>
+                        <p style="font-family:gotham-book; font-size: 14px;" class="descent">
+                            Descent: -1390,
+                        </p>
+                        <p style="font-family:gotham-book; font-size: 14px;" class="condition">
+                            Condition: All Clear,
+                        </p>
+                        <!-- <button class="button is-success">Save changes</button>
                                 <button class="button">Cancel</button> -->
-                        
+
                     </section>
-                
+
                 </div>
             </div>
             <button id="image-modal-close" class="modal-close"></button>
