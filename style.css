@@ -16,7 +16,6 @@
   }
 
 .column{
-    /* height : 90%vh; */
     position: relative;
     display:flex;
     flex-direction:column;
@@ -25,13 +24,10 @@
   }
 
 .test{
-    /* background-color: coral; */
-    /* height : 90%vh; */
-    /* align-items: stretch; */
-    /* position: fixed; */
+
     position:absolute;
     bottom:10px;
-    width:100%;
+    width:95%;
     padding: 10px;
    
     
