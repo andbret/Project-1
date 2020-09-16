@@ -1,61 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <style>
+        /* gotham fonts with multiple sources for browser compatability */
+        @font-face {
+            font-family: gotham-book;
+            src: url("gotham-book.oft") format("opentype"),
+                /* Original File */
+                url("gotham-book.woff") format("woff"),
+                /* Modern Browsers */
+                url("gotham-book.ttf") format("truetype");
+            /* Safari, Android, iOS */
+        }
+
+        @font-face {
+            font-family: gotham-black;
+            src: url("gotham-black.otf") format("opentype"),
+                /* Original File */
+                url("gotham-black.woff") format("woff"),
+                /* Modern Browsers */
+                url("gotham-black.ttf") format("truetype");
+            /* Safari, Android, iOS */
+        }
+    </style>
 </head>
-<body>
-    <script type="text/javascript">
-        // zip code as determined by user
-        var zipCode = 19460
-        // URL for openWeather API to determine coordinates, to be used in the hiking API
-        var queryURLcoord = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=209f8c58871bc71410613a476769ea05`
 
-        $.ajax({
-            url: queryURLcoord,
-            method: "GET"
-        }).then(function(weather){
-            // console.log(weather);
-            
-            // coordinates
-            var lat = weather.coord.lat;
-            var lon = weather.coord.lon;
-            // max distance from lon and lat
-            var max = 20;
-            // minumum length of trail based on the calculation of how many miles the user should walk
-            var minimumTrailLength = 12;
-            // URL for hinking API
-            var queryURL = `https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lon}&maxDistance=${max}&minLength=${minimumTrailLength}&key=200914730-ab7614e0ee0bfb0265f3fa4b3c4abc83`
+<body class="background">
+    <section class="section">
+        <div class="container">
 
-            $.ajax({
-                    url: queryURL,
-                    method: "GET"
-                }).then(function(hikingData){
-                console.log(hikingData);
+
+
+            <div class="columns is-variable is-2 is-full-height">
+                <div class="column is-half">
+                    <h1 class="title" style="font-family:gotham-black; font-size: 5vw;">
+                        Had a snack? Let's help you burn it off.
+                    </h1>
+                    <p style="font-family:gotham-book;">
+                        I'm baby glossier messenger bag bitters squid sartorial chillwave woke kombucha. Af brunch banh
+                        mi meh PBR&B banjo pok pok, vexillologist vegan adaptogen small batch bespoke kickstarter
+                        helvetica lo-fi.
+                    </p>
                     
-                for(i = 0 ; i < hikingData.trails.length; i++){
-                    var selectedTrail = hikingData.trails[i]["length"];
-                    if(selectedTrail >= minimumTrailLength){
-                        console.log(hikingData.trails[i]);
-                    }
 
-                    // //    var trailsWithMinimumLength = hikingData.trails.filter(function(trail) {
-                    // //         // trail is an Object in here
-                            
-                    // //         return trail.length >= minimumTrailLength;
-                            
-                    //     });
-                    
-                 }
-            
-            })
-        })
 
-       
-        
-    </script>
-    
+                </div>
+              
+                <div class="column is-half is-full-height">
+                    <div class="test">
+                        <div class="field">
+                            <!-- <label class="label">Name</label> -->
+                            <div class="control">
+                                <input class="input is-medium" type="text" placeholder="What was your snack?" id="snack">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <!-- <label class="label">Email</label> -->
+                            <div class="control">
+                                <input class="input is-medium" type="text" placeholder="What is your body weight?"
+                                    id="weight">
+                            </div>
+                        </div>
+
+
+
+                        <div class="field">
+                            <!-- <label class="label">Email</label> -->
+                            <div class="control">
+                                <input class="input is-medium" type="text" placeholder="What is your ZIP code?"
+                                    id="zip">
+                            </div>
+                        </div>
+                        <p class="control is-expanded">
+                            <button class="button is-info is-medium">Submit</button>
+                        </p>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </section>
+
 </body>
+
 </html>
