@@ -18,6 +18,10 @@ function determineCalories(snack, bodyWeight, zip){
 
     // insert ajax call for calories here
     // within the .then function take the calories and run the equation to calculate minimum walking distance (minumumTrailLength)
+    
+    
+    var miles = (calories * 1.37)/bodyWeight;
+    minimumTrailLength = Math.round(miles);
 
     apiCallcoords(zip, minimumTrailLength);
 }
