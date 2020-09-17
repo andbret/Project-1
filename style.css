@@ -62,3 +62,22 @@ html {
    border-radius: 20px;
    color: azure;
  }
+
+@media (max-width: 1024px){
+  .is-full-height{
+    height: 90vh;
+  }
+}
+@media (max-width: 768px){
+  .is-full-height{
+    height: 50vh;
+  }
+}
+
+
+
+/* .columns.is-variable {
+  --columnGap: 0.75rem;
+  margin-left: calc(-1 * var(--columnGap));
+  margin-right: calc(-1 * var(--columnGap));
+} */
