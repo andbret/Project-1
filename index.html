@@ -48,9 +48,7 @@
                         Had a snack? Let's help you walk it off.
                     </h1>
                     <p style="font-family:gotham-book;">
-                        I'm baby glossier messenger bag bitters squid sartorial chillwave woke kombucha. Af brunch banh
-                        mi meh PBR&B banjo pok pok, vexillologist vegan adaptogen small batch bespoke kickstarter
-                        helvetica lo-fi.
+                        Enter in the snack you ate, your body weight and zipcode, and we will provide you with a local hiking spot at an appropriate length, that will help you burn off those extra calories!  
                     </p>
 
 
@@ -85,7 +83,11 @@
                             </div>
                         </div>
                         <p class="control is-expanded">
-                            <button class="button is-info is-medium" id="showModal">Submit</button>
+
+                           
+
+                            <button class="button is-info is-medium" id="submitButton">Submit</button>
+
                         </p>
 
 
@@ -104,6 +106,7 @@
 
 
     </section>
+
 
     <div class="container" id="app">
         <div id="image-modal" class="modal">
@@ -186,18 +189,11 @@
     </div>
 
 
-    <script type="text/javascript">
-        var btn = document.querySelector('#showModal');
-        var modalDlg = document.querySelector('#image-modal');
-        var imageModalCloseBtn = document.querySelector('#image-modal-close');
-        btn.addEventListener('click', function () {
-            modalDlg.classList.add('is-active');
-        });
 
-        imageModalCloseBtn.addEventListener('click', function () {
-            modalDlg.classList.remove('is-active');
-        });
-    </script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src = "script.js"></script>
+
 </body>
 
 </html>
