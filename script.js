@@ -4,10 +4,19 @@ var bodyWeightInput = $("#weight");
 var submit = $("#submitButton");
 var zipCode = $("#zip");
 
+var modalDlg = document.querySelector('#image-modal');
+var imageModalCloseBtn = document.querySelector('#image-modal-close');
+
+// imageModalCloseBtn.addEventListener('click', function () {
+//     modalDlg.classList.remove('is-active');
+// });
+
+
 submit.click(function () {
   var zip = zipCode.val();
   var snack = snackInput.val();
   var bodyWeight = bodyWeightInput.val();
+//   modalDlg.classList.add('is-active');
   determineCalories(snack, bodyWeight, zip);
   console.log(zip);
   // apiCallcoords();
@@ -65,7 +74,7 @@ function apiCallHike(lat, lon, minimumTrailLength) {
 
     for (i = 0; i < hikingData.trails.length; i++) {
       var selectedTrail = hikingData.trails[i]["length"];
-      if (selectedTrail >= minimumTrailLength) {
+      if (selectedTrail >= minimumTrailLength && selectedTrail <= minimumTrailLength + 2) {
         console.log(hikingData.trails[i]);
       }
 
