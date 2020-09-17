@@ -5297,7 +5297,7 @@ button.dropdown-item.is-active {
   flex-grow: 1;
   flex-shrink: 1;
   overflow: auto;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 .navbar {
