@@ -8,50 +8,65 @@ var loadModal = document.querySelector('#loading-modal');
 var imageModalCloseBtn = document.querySelector('#image-modal-close');
 var snackTest = document.querySelector('#snack');
 var amountInput = $("#amount");
+var elementExists = document.getElementById("#error");
 
 imageModalCloseBtn.addEventListener('click', function () {
     modalDlg.classList.remove('is-active');
-    
+
 });
 
-submit.click(function () {
+submit.click(async function () {
+  snackTest.classList.remove('is-danger');
+  $("#error").remove()
   loadModal.classList.add('is-active');
   var zip = zipCode.val();
   var snack = snackInput.val();
   var bodyWeight = bodyWeightInput.val();
   var amount = amountInput.val();
 try{
-  determineCalories(snack, bodyWeight, zip, amount);
+  await determineCalories(snack, bodyWeight, zip, amount);
 } catch (error){
-  console.log(error);
-}
-finally {
   loadModal.classList.remove('is-active');
   snackTest.classList.add('is-danger');
+  
+  $(".errorInput").append('<p class="help is-danger" id="error">This is not a valid food</p>');
+
+  return;
 }
 
-  
-  console.log(zip);
-  // apiCallcoords();
+  loadModal.classList.add('is-active');
+
 });
 
-function determineCalories(snack, bodyWeight, zip, amount) {
+async function determineCalories(snack, bodyWeight, zip, amount) {
   console.log(zip);
-  $.ajax({
+  const getInfo = await $.ajax({
     url: "https://trackapi.nutritionix.com/v2/search/instant?query=" + snack,
     method: "GET",
     beforeSend: function (xhr) {
       xhr.setRequestHeader("x-app-id", "e75b2779");
       xhr.setRequestHeader("x-app-key", "0be5c122a01d2e0e81c70fd596e73aea");
     },
-  }).then(function (getInfo) {
+
+  });
+
+    console.log(getInfo);
+
+    if(!getInfo.branded.length){
+      console.log("here")
+      throw new Error("not a valid food");
+    }
+
     var calories = getInfo.branded[0].nf_calories * amount;
+
     console.log(getInfo.branded[0]);
+
     var miles = (calories * 1.37) / bodyWeight;
     var minimumTrailLength = Math.round(miles);
+
     console.log(minimumTrailLength);
+
     apiCallcoords(zip, minimumTrailLength);
-  });
 }
 
 function apiCallcoords(zip, minimumTrailLength) {
@@ -96,13 +111,13 @@ function apiCallHike(lat, lon, minimumTrailLength) {
       }
 
     }
-    
+
     // displaying all the information in the pop up modal
     console.log(trailId[0]);
     var trailIMG = hikingData.trails[0]["imgMedium"];
     console.log(trailIMG);
     if( trailIMG === ""){
-      $("#trailImage").attr("src", "noImage.jpg" );  
+      $("#trailImage").attr("src", "noImage.jpg" );
     }
     else{
     $("#trailImage").attr("src", trailId[0].imgMedium);
@@ -121,6 +136,5 @@ function apiCallHike(lat, lon, minimumTrailLength) {
 }
 
 
- 
 
-  
+
