@@ -64,19 +64,13 @@ html {
   padding: 20px;
 }
 
-.feelingNaughty {
-  float: right;
-  max-width: 140px;
-}
-<<<<<<< HEAD
-=======
-.padding{
+.padding {
   padding: 20px;
 }
-.card-footer{
+.card-footer {
   background-color: rgb(231, 231, 231);
 }
-.card-foot{
+.card-foot {
   max-width: 40%;
   margin: 20px;
 }
@@ -84,6 +78,4 @@ html {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  
 }
->>>>>>> 39e3ab524d5c1652f0356e23aecc4783178a5e9e
