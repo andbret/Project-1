@@ -1,12 +1,11 @@
-
 var snackInput = $("#snack");
 var bodyWeightInput = $("#weight");
 var submit = $("#submitButton");
 var zipCode = $("#zip");
-var modalDlg = document.querySelector('#image-modal');
-var loadModal = document.querySelector('#loading-modal');
-var imageModalCloseBtn = document.querySelector('#image-modal-close');
-var snackTest = document.querySelector('#snack');
+var modalDlg = document.querySelector("#image-modal");
+var loadModal = document.querySelector("#loading-modal");
+var imageModalCloseBtn = document.querySelector("#image-modal-close");
+var snackTest = document.querySelector("#snack");
 var amountInput = $("#amount");
 var elementExists = document.getElementById("#error");
 
@@ -63,7 +62,6 @@ async function determineCalories(snack, bodyWeight, zip, amount) {
 
     var miles = (calories * 1.37) / bodyWeight;
     var minimumTrailLength = Math.round(miles);
-
     console.log(minimumTrailLength);
 
     apiCallcoords(zip, minimumTrailLength);
@@ -100,38 +98,39 @@ function apiCallHike(lat, lon, minimumTrailLength) {
     method: "GET",
   }).then(function (hikingData) {
     console.log(hikingData);
-    var trailId =[];
+    var trailId = [];
     for (i = 0; i < hikingData.trails.length; i++) {
       var selectedTrail = hikingData.trails[i]["length"];
-      if (selectedTrail >= minimumTrailLength && selectedTrail <= minimumTrailLength + 3) {
+      if (
+        selectedTrail >= minimumTrailLength &&
+        selectedTrail <= minimumTrailLength + 3
+      ) {
         // console.log(hikingData.trails[i]);
         trailId.push(hikingData.trails[i]);
-      } else if(selectedTrail >= minimumTrailLength +10){
-        trailId.push(hikingData.trails[i])
+      } else if (selectedTrail >= minimumTrailLength + 10) {
+        trailId.push(hikingData.trails[i]);
       }
-
     }
 
     // displaying all the information in the pop up modal
     console.log(trailId[0]);
     var trailIMG = hikingData.trails[0]["imgMedium"];
     console.log(trailIMG);
-    if( trailIMG === ""){
-      $("#trailImage").attr("src", "noImage.jpg" );
+    if (trailIMG === "") {
+      $("#trailImage").attr("src", "noImage.jpg");
+    } else {
+      $("#trailImage").attr("src", trailId[0].imgMedium);
     }
-    else{
-    $("#trailImage").attr("src", trailId[0].imgMedium);
-  }
     $("#trailName").text(trailId[0].name + " is the perfect hike for you!");
     $("#trailSummary").text(trailId[0].summary);
     $("#difficulty").text("difficulty: " + trailId[0].difficulty);
     $("#rating").text("rating: " + trailId[0].stars + "★");
     $("#length").text("length: " + trailId[0].length + " miles");
-    $("#ascent").text("ascent: " + trailId[0].ascent );
-    $("#descent").text("descent: " + trailId[0].descent );
+    $("#ascent").text("ascent: " + trailId[0].ascent);
+    $("#descent").text("descent: " + trailId[0].descent);
     $("#condition").text("condition: " + trailId[0].condition);
-    loadModal.classList.remove('is-active');
-    modalDlg.classList.add('is-active');
+    loadModal.classList.remove("is-active");
+    modalDlg.classList.add("is-active");
   });
 }
 
