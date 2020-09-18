@@ -44,20 +44,23 @@ html {
   flex-direction: column;
 }
 .pill{
- background-color: rgb(48, 157, 207);
+ background-color:#76dabc;
  padding:8px;
  border-radius: 20px;
  color: azure;
 }
+
 @media (max-width: 1024px){
 .is-full-height{
   height: 90vh;
+
 }
 }
 @media (max-width: 768px){
 .is-full-height{
   height: 55vh;
 }
+
 }
 .padding{
   padding: 20px;
