@@ -26,6 +26,7 @@ function determineCalories(snack, bodyWeight, zip) {
     var calories = getInfo.branded[0].nf_calories;
     var miles = (calories * 1.37) / bodyWeight;
     var minimumTrailLength = Math.round(miles);
+    console.log(getInfo);
     console.log(minimumTrailLength);
     apiCallcoords(zip, minimumTrailLength);
   });
