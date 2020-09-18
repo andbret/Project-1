@@ -49,8 +49,8 @@
                     <div class="test">
                         <div class="field">
                             <!-- <label class="label">Name</label> -->
-                            <div class="control is-expanded">
-                                <input class="input is-medium" type="text" placeholder="What was your snack?"
+                            <div class="control is-expanded errorInput">
+                                <input class="input  is-medium" type="text" placeholder="What was your snack?"
                                     id="snack">
                             </div>
                         </div>
@@ -81,44 +81,18 @@
                     </div>
                 </div>
               </div>
-              <div class="field">
-                <!-- <label class="label">Email</label> -->
-                <div class="control">
-                  <input
-                    class="input is-medium"
-                    type="text"
-                    placeholder="How much do you weigh?"
-                    id="weight"
-                  />
-                </div>
-              </div>
-              <div class="field">
-                <!-- <label class="label">Email</label> -->
-                <div class="control">
-                  <input
-                    class="input is-medium"
-                    type="text"
-                    placeholder="What is your ZIP code?"
-                    id="zip"
-                  />
-                </div>
-              </div>
-              <p class="control is-expanded">
-                <button class="button is-info is-medium" id="submitButton">
-                  Submit
-                </button>
-              </p>
+              
             </div>
           </div>
         </div>
       </div>
     </section>
     <div class="container" id="app">
-      <div id="image-modal" class="modal">
-        <div class="modal-background"></div>
-        <div class="modal-content">
-          <div class="modal-card">
-            <!-- <header class="modal-card-head">
+        <div id="image-modal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="modal-card">
+                    <!-- <header class="modal-card-head">
             <p class="modal-card-title">Modal title</p>
           </header> -->
                     <div class="modal-card-body is-variable">
@@ -177,10 +151,8 @@
 
                 </div>
             </div>
-          </div>
+            <button id="image-modal-close" class="modal-close"></button>
         </div>
-        <button id="image-modal-close" class="modal-close"></button>
-      </div>
     </div>
 
 
