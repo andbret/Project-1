@@ -14,14 +14,12 @@ imageModalCloseBtn.addEventListener('click', function () {
     
 });
 
-
 submit.click(function () {
   loadModal.classList.add('is-active');
   var zip = zipCode.val();
   var snack = snackInput.val();
   var bodyWeight = bodyWeightInput.val();
   var amount = amountInput.val();
-
 try{
   determineCalories(snack, bodyWeight, zip, amount);
 } catch (error){
@@ -30,10 +28,8 @@ try{
 finally {
   loadModal.classList.remove('is-active');
   snackTest.classList.add('is-danger');
-  // $("snack").append("<span class="icon is-small is-right"><i class="fas fa-exclamation-triangle"></i></span>");
 }
 
-  // determineCalories(snack, bodyWeight, zip, amount);
   
   console.log(zip);
   // apiCallcoords();
@@ -101,14 +97,6 @@ function apiCallHike(lat, lon, minimumTrailLength) {
 
     }
     
-    //    this below is just stored for possible sorting logic
-    // //    var trailsWithMinimumLength = hikingData.trails.filter(function(trail) {
-      // //         // trail is an Object in here
-
-      // //         return trail.length >= minimumTrailLength;
-
-      //     });
-
     // displaying all the information in the pop up modal
     console.log(trailId[0]);
     var trailIMG = hikingData.trails[0]["imgMedium"];
