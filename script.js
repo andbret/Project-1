@@ -3,21 +3,35 @@ var snackInput = $("#snack");
 var bodyWeightInput = $("#weight");
 var submit = $("#submitButton");
 var zipCode = $("#zip");
-
+var tttest = 0;
 var modalDlg = document.querySelector('#image-modal');
+var loadModal = document.querySelector('#loading-modal');
 var imageModalCloseBtn = document.querySelector('#image-modal-close');
-
+var snackTest = document.querySelector('#snack');
 imageModalCloseBtn.addEventListener('click', function () {
     modalDlg.classList.remove('is-active');
+    
 });
 
 
 submit.click(function () {
+  loadModal.classList.add('is-active');
   var zip = zipCode.val();
   var snack = snackInput.val();
   var bodyWeight = bodyWeightInput.val();
 //   modalDlg.classList.add('is-active');
+try{
+  determineCalories(snack);
+} catch (error){
+  console.log(error);
+}
+finally {
+  loadModal.classList.remove('is-active');
+  snackTest.classList.add('is-danger');
+}
+
   determineCalories(snack, bodyWeight, zip);
+  
   console.log(zip);
   // apiCallcoords();
 });
@@ -33,10 +47,16 @@ function determineCalories(snack, bodyWeight, zip) {
     },
   }).then(function (getInfo) {
     var calories = getInfo.branded[0].nf_calories;
+    console.log(getInfo.branded[0]);
+    // if( snackInput === "undefined"){
+    //   loadModal.classList.remove('is-active');
+    // }
+    // else{
     var miles = (calories * 1.37) / bodyWeight;
     var minimumTrailLength = Math.round(miles);
     console.log(minimumTrailLength);
     apiCallcoords(zip, minimumTrailLength);
+  // }
   });
 }
 
@@ -90,7 +110,14 @@ function apiCallHike(lat, lon, minimumTrailLength) {
       //     });
 
     console.log(trailId[0]);
+    var trailIMG = hikingData.trails[0]["imgMedium"];
+    console.log(trailIMG);
+    if( trailIMG === ""){
+      $("#trailImage").attr("src", "noImage.jpg" );  
+    }
+    else{
     $("#trailImage").attr("src", trailId[0].imgMedium);
+  }
     $("#trailName").text(trailId[0].name + " is the perfect hike for you!");
     $("#trailSummary").text(trailId[0].summary);
     $("#difficulty").text("difficulty: " + trailId[0].difficulty);
@@ -99,6 +126,7 @@ function apiCallHike(lat, lon, minimumTrailLength) {
     $("#ascent").text("ascent: " + trailId[0].ascent );
     $("#descent").text("descent: " + trailId[0].descent );
     $("#condition").text("condition: " + trailId[0].ascent);
+    loadModal.classList.remove('is-active');
     modalDlg.classList.add('is-active');
   });
 }
