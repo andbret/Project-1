@@ -3,6 +3,7 @@ var snackInput = $("#snack");
 var bodyWeightInput = $("#weight");
 var submit = $("#submitButton");
 var zipCode = $("#zip");
+var amountInput = $("#amount");
 
 var modalDlg = document.querySelector('#image-modal');
 var imageModalCloseBtn = document.querySelector('#image-modal-close');
@@ -16,13 +17,22 @@ submit.click(function () {
   var zip = zipCode.val();
   var snack = snackInput.val();
   var bodyWeight = bodyWeightInput.val();
+  var amount = amountInput.val();
 //   modalDlg.classList.add('is-active');
-  determineCalories(snack, bodyWeight, zip);
+try{
+  determineCalories(snack);
+} catch (error){
+  console.log(error);
+}
+finally {
+  // loadModal.classList.remove('is-active');
+  snackTest.classList.add('is-danger');
+}
   console.log(zip);
   // apiCallcoords();
 });
 
-function determineCalories(snack, bodyWeight, zip) {
+function determineCalories(snack, bodyWeight, zip, amount) {
   console.log(zip);
   $.ajax({
     url: "https://trackapi.nutritionix.com/v2/search/instant?query=" + snack,
@@ -32,7 +42,9 @@ function determineCalories(snack, bodyWeight, zip) {
       xhr.setRequestHeader("x-app-key", "0be5c122a01d2e0e81c70fd596e73aea");
     },
   }).then(function (getInfo) {
-    var calories = getInfo.branded[0].nf_calories;
+    console.log(getInfo);
+    var calories = getInfo.branded[0].nf_calories * amount;
+    
     var miles = (calories * 1.37) / bodyWeight;
     var minimumTrailLength = Math.round(miles);
     console.log(minimumTrailLength);
@@ -74,10 +86,13 @@ function apiCallHike(lat, lon, minimumTrailLength) {
     var trailId =[];
     for (i = 0; i < hikingData.trails.length; i++) {
       var selectedTrail = hikingData.trails[i]["length"];
-      if (selectedTrail >= minimumTrailLength && selectedTrail <= minimumTrailLength + 2) {
+      if (selectedTrail >= minimumTrailLength && selectedTrail <= minimumTrailLength + 3) {
         // console.log(hikingData.trails[i]);
         trailId.push(hikingData.trails[i]);
+      } else if(selectedTrail >= minimumTrailLength +10){
+        trailId.push(hikingData.trails[i])
       }
+
     }
     
     //    this below is just stored for possible sorting logic
