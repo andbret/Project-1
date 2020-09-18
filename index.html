@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+=======
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+>>>>>>> 39e3ab524d5c1652f0356e23aecc4783178a5e9e
     <title>Walk it off</title>
     <link rel="stylesheet" href="style.css" />
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"> -->
     <link rel="stylesheet" href="bulma.css" />
     <style>
+<<<<<<< HEAD
       /* gotham fonts with multiple sources for browser compatability */
       @font-face {
         font-family: gotham-book;
@@ -61,6 +69,79 @@
                     placeholder="How many did you have?"
                     id="amount"
                   />
+=======
+        /* gotham fonts with multiple sources for browser compatability */
+        @font-face {
+            font-family: gotham-book;
+            src: url("gotham-book.oft") format("opentype"),
+                /* Original File */
+                url("gotham-book.woff") format("woff"),
+                /* Modern Browsers */
+                url("gotham-book.ttf") format("truetype");
+            /* Safari, Android, iOS */
+        }
+
+        @font-face {
+            font-family: gotham-black;
+            src: url("gotham-black.otf") format("opentype"),
+                /* Original File */
+                url("gotham-black.woff") format("woff"),
+                /* Modern Browsers */
+                url("gotham-black.ttf") format("truetype");
+            /* Safari, Android, iOS */
+        }
+    </style>
+</head>
+
+<body class="background">
+    <section class="section">
+        <div class="container">
+            <div class="columns is-variable is-2 is-full-height">
+                <div class="column is-half">
+                    <h1 class="title" style="font-family:gotham-black; font-size: 5vw;">
+                        Had a snack? Let's help you walk it off.
+                    </h1>
+                    <p style="font-family:gotham-book;">
+                        Enter in the snack you ate, your body weight and zipcode, and we will provide you with a local hiking spot at an appropriate length, that will help you burn off those extra calories!
+                    </p>
+                 
+                </div>
+                <div class="column is-half is-full-height">
+                    <div class="test">
+                        <div class="field">
+                            <!-- <label class="label">Name</label> -->
+                            <div class="control is-expanded">
+                                <input class="input is-medium" type="text" placeholder="What was your snack?"
+                                    id="snack">
+                            </div>
+                        </div>
+
+
+                        <div class="field">
+                            <div class="control is-expanded">
+                                <input class="input is-medium" type="text" placeholder="How many did you have?"
+                                    id="amount">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <!-- <label class="label">Email</label> -->
+                            <div class="control">
+                                <input class="input is-medium" type="text" placeholder="How much do you weigh?"
+                                    id="weight">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <!-- <label class="label">Email</label> -->
+                            <div class="control">
+                                <input class="input is-medium" type="text" placeholder="What is your ZIP code?"
+                                    id="zip">
+                            </div>
+                        </div>
+                        <p class="control is-expanded">
+                            <button class="button is-info is-medium" id="submitButton">Submit</button>
+                        </p>
+                    </div>
+>>>>>>> 39e3ab524d5c1652f0356e23aecc4783178a5e9e
                 </div>
               </div>
               <div class="field">
@@ -111,6 +192,7 @@
             <!-- <header class="modal-card-head">
             <p class="modal-card-title">Modal title</p>
           </header> -->
+<<<<<<< HEAD
             <div class="modal-card-body is-variable">
               <div class="card-image">
                 <img
@@ -175,13 +257,90 @@
                 <!-- <button class="button is-success">Save changes</button>
                                 <button class="button">Cancel</button> -->
               </div>
+=======
+                    <div class="modal-card-body is-variable">
+                        <div class="card-image">
+
+                            <img id="trailImage" alt="Girl in a jacket" width="1000" height="300">
+                            <img class="image">
+                        </div>
+                        <div class="padding">
+                            <p style="font-family:gotham-black; font-size: 18px;" id="trailName">
+
+                            </p>
+                            <p style="font-family:gotham-book;" id="trailSummary" class="explanation">
+
+                            </p>
+                            <hr>
+                            <div class="columns">
+                                <div class="column is-half">
+                                    <span style="font-family:gotham-black; font-size: 14px;" id="difficulty"
+                                        class="pill">
+                                        &nbsp;&nbsp;
+                                    </span>
+                                </div>
+                                <div class="column is-half">
+                                    <span style="font-family:gotham-black; font-size: 14px;" id="rating" class="pill">
+                                        &nbsp;&nbsp;
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- <p style="font-family:gotham-book; font-size: 14px;" class="summary">
+                            It will take 8 miles to burn off all 500 calories from that donut.
+                        </p> -->
+                            <br>
+                            <p style="font-family:gotham-book; font-size: 14px;" id="length">
+
+                            </p>
+                            <p style="font-family:gotham-book; font-size: 14px;" id="ascent">
+
+                            </p>
+                            <p style="font-family:gotham-book; font-size: 14px;" id="descent">
+
+                            </p>
+                            <p style="font-family:gotham-book; font-size: 14px;" id="condition">
+
+                            </p>
+                            <br></br>
+                            <!-- <button class="button is-success">Save changes</button>
+                                <button class="button">Cancel</button> -->
+
+                        </div>
+                        <footer class="card-footer">
+                            <img class="card-foot" src="logoHex2.svg" />
+                            <img class="card-foot" src="NutritionixAPI_hires_flat.png" />
+                        </footer>
+                    </div>
+
+                </div>
+>>>>>>> 39e3ab524d5c1652f0356e23aecc4783178a5e9e
             </div>
           </div>
         </div>
         <button id="image-modal-close" class="modal-close"></button>
       </div>
     </div>
+
+
+    <div id="loading-modal" class="modal center">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+    
+            <img class="center" src="loading.svg" alt="">
+        
+        </div>
+    
+      </div>
+
+
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
+<<<<<<< HEAD
   </body>
 </html>
+=======
+</body>
+
+</html>
+>>>>>>> 39e3ab524d5c1652f0356e23aecc4783178a5e9e
