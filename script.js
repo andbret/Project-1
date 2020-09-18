@@ -19,7 +19,7 @@ submit.click(function () {
   var zip = zipCode.val();
   var snack = snackInput.val();
   var bodyWeight = bodyWeightInput.val();
-//   modalDlg.classList.add('is-active');
+
 try{
   determineCalories(snack);
 } catch (error){
@@ -28,6 +28,7 @@ try{
 finally {
   loadModal.classList.remove('is-active');
   snackTest.classList.add('is-danger');
+  // $("snack").append("<span class="icon is-small is-right"><i class="fas fa-exclamation-triangle"></i></span>");
 }
 
   determineCalories(snack, bodyWeight, zip);
@@ -48,10 +49,6 @@ function determineCalories(snack, bodyWeight, zip) {
   }).then(function (getInfo) {
     var calories = getInfo.branded[0].nf_calories;
     console.log(getInfo.branded[0]);
-    // if( snackInput === "undefined"){
-    //   loadModal.classList.remove('is-active');
-    // }
-    // else{
     var miles = (calories * 1.37) / bodyWeight;
     var minimumTrailLength = Math.round(miles);
     console.log(minimumTrailLength);
