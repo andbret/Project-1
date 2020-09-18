@@ -1,31 +1,31 @@
 @font-face {
   font-family: gotham-book;
   src: url("../gotham-book.oft") format("opentype"),
-  url("../gotham-book.woff") format("woff"), /* Modern Browsers */
-  url("../gotham-book.ttf")  format("truetype"); /* Safari, Android, iOS */
+    url("../gotham-book.woff") format("woff"),
+    /* Modern Browsers */ url("../gotham-book.ttf") format("truetype"); /* Safari, Android, iOS */
 }
 @font-face {
   font-family: gotham-black;
   src: url("../gotham-black.otf") format("opentype"),
-  url("../gotham-black.woff") format("woff"), /* Modern Browsers */
-  url("../gotham-black.ttf")  format("truetype"); /* Safari, Android, iOS */
+    url("../gotham-black.woff") format("woff"),
+    /* Modern Browsers */ url("../gotham-black.ttf") format("truetype"); /* Safari, Android, iOS */
 }
-.title{
+.title {
   font-size: 40px;
 }
-.column{
+.column {
   position: relative;
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
   align-items: stretch;
 }
-.test{
-  position:absolute;
-  bottom:10px;
-  width:95%;
+.test {
+  position: absolute;
+  bottom: 10px;
+  width: 95%;
   padding: 10px;
 }
-.button{
+.button {
   width: 100%;
 }
 html {
@@ -35,7 +35,7 @@ html {
   background-position: bottom;
   background-size: 100% auto;
 }
-.is-full-height{
+.is-full-height {
   height: 90vh;
 }
 .main {
@@ -43,32 +43,34 @@ html {
   min-height: 100vh;
   flex-direction: column;
 }
-.pill{
- background-color:#76dabc;
- padding:8px;
- border-radius: 20px;
- color: azure;
+.pill {
+  background-color: #76dabc;
+  padding: 8px;
+  border-radius: 20px;
+  color: azure;
 }
 
-@media (max-width: 1024px){
-.is-full-height{
-  height: 90vh;
-
+@media (max-width: 1024px) {
+  .is-full-height {
+    height: 90vh;
+  }
 }
+@media (max-width: 768px) {
+  .is-full-height {
+    height: 55vh;
+  }
 }
-@media (max-width: 768px){
-.is-full-height{
-  height: 55vh;
-}
-
-}
-.padding{
+.padding {
   padding: 20px;
 }
-.card-footer{
+
+.padding {
+  padding: 20px;
+}
+.card-footer {
   background-color: rgb(231, 231, 231);
 }
-.card-foot{
+.card-foot {
   max-width: 40%;
   margin: 20px;
 }
@@ -76,5 +78,4 @@ html {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  
 }
