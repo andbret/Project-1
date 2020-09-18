@@ -80,7 +80,6 @@ function apiCallHike(lat, lon, minimumTrailLength) {
       }
     }
     
-
     //    this below is just stored for possible sorting logic
     // //    var trailsWithMinimumLength = hikingData.trails.filter(function(trail) {
       // //         // trail is an Object in here
@@ -89,6 +88,7 @@ function apiCallHike(lat, lon, minimumTrailLength) {
 
       //     });
 
+    // displaying all the information in the pop up modal
     console.log(trailId[0]);
     $("#trailImage").attr("src", trailId[0].imgMedium);
     $("#trailName").text(trailId[0].name + " is the perfect hike for you!");
@@ -98,7 +98,7 @@ function apiCallHike(lat, lon, minimumTrailLength) {
     $("#length").text("length: " + trailId[0].length + " miles");
     $("#ascent").text("ascent: " + trailId[0].ascent );
     $("#descent").text("descent: " + trailId[0].descent );
-    $("#condition").text("condition: " + trailId[0].ascent);
+    $("#condition").text("condition: " + trailId[0].condition);
     modalDlg.classList.add('is-active');
   });
 }
