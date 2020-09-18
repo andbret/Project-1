@@ -1,33 +1,38 @@
-// zip code as determined by user
+
 var snackInput = $("#snack");
 var bodyWeightInput = $("#weight");
 var submit = $("#submitButton");
 var zipCode = $("#zip");
-var amountInput = $("#amount");
-
 var modalDlg = document.querySelector('#image-modal');
+var loadModal = document.querySelector('#loading-modal');
 var imageModalCloseBtn = document.querySelector('#image-modal-close');
+var snackTest = document.querySelector('#snack');
+var amountInput = $("#amount");
 
 imageModalCloseBtn.addEventListener('click', function () {
     modalDlg.classList.remove('is-active');
+    
 });
 
 
 submit.click(function () {
+  loadModal.classList.add('is-active');
   var zip = zipCode.val();
   var snack = snackInput.val();
   var bodyWeight = bodyWeightInput.val();
   var amount = amountInput.val();
-//   modalDlg.classList.add('is-active');
 try{
-  determineCalories(snack);
+  determineCalories(snack, bodyWeight, zip, amount);
 } catch (error){
   console.log(error);
 }
 finally {
-  // loadModal.classList.remove('is-active');
+  loadModal.classList.remove('is-active');
   snackTest.classList.add('is-danger');
 }
+
+  // determineCalories(snack, bodyWeight, zip, amount);
+  
   console.log(zip);
   // apiCallcoords();
 });
@@ -42,9 +47,8 @@ function determineCalories(snack, bodyWeight, zip, amount) {
       xhr.setRequestHeader("x-app-key", "0be5c122a01d2e0e81c70fd596e73aea");
     },
   }).then(function (getInfo) {
-    console.log(getInfo);
     var calories = getInfo.branded[0].nf_calories * amount;
-    
+    console.log(getInfo.branded[0]);
     var miles = (calories * 1.37) / bodyWeight;
     var minimumTrailLength = Math.round(miles);
     console.log(minimumTrailLength);
@@ -105,7 +109,14 @@ function apiCallHike(lat, lon, minimumTrailLength) {
 
     // displaying all the information in the pop up modal
     console.log(trailId[0]);
+    var trailIMG = hikingData.trails[0]["imgMedium"];
+    console.log(trailIMG);
+    if( trailIMG === ""){
+      $("#trailImage").attr("src", "noImage.jpg" );  
+    }
+    else{
     $("#trailImage").attr("src", trailId[0].imgMedium);
+  }
     $("#trailName").text(trailId[0].name + " is the perfect hike for you!");
     $("#trailSummary").text(trailId[0].summary);
     $("#difficulty").text("difficulty: " + trailId[0].difficulty);
@@ -114,6 +125,7 @@ function apiCallHike(lat, lon, minimumTrailLength) {
     $("#ascent").text("ascent: " + trailId[0].ascent );
     $("#descent").text("descent: " + trailId[0].descent );
     $("#condition").text("condition: " + trailId[0].condition);
+    loadModal.classList.remove('is-active');
     modalDlg.classList.add('is-active');
   });
 }
