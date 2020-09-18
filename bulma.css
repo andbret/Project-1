@@ -1221,13 +1221,13 @@ fieldset[disabled] .button.is-link.is-inverted.is-outlined {
 }
 
 .button.is-info {
-  background-color: #3298dc;
+  background-color: #76dabc;
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-info:hover, .button.is-info.is-hovered {
-  background-color: #2793da;
+  background-color: #62b89e;
   border-color: transparent;
   color: #fff;
 }
@@ -1242,7 +1242,7 @@ fieldset[disabled] .button.is-link.is-inverted.is-outlined {
 }
 
 .button.is-info:active, .button.is-info.is-active {
-  background-color: #238cd1;
+  background-color: #45806e;
   border-color: transparent;
   color: #fff;
 }
@@ -3885,7 +3885,7 @@ fieldset[disabled] .select select:hover {
 }
 
 .file.is-info .file-cta {
-  background-color: #3298dc;
+  background-color: #6ac3ff;
   border-color: transparent;
   color: #fff;
 }
@@ -5297,7 +5297,7 @@ button.dropdown-item.is-active {
   flex-grow: 1;
   flex-shrink: 1;
   overflow: auto;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 .navbar {
