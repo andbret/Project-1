@@ -106,9 +106,10 @@ function apiCallHike(lat, lon, minimumTrailLength) {
   });
 }
 
-naughty.click(function (snack) {
+naughty.click(function (lat, lon, snack) {
   $.ajax({
-    url: "https://trackapi.nutritionix.com/v2/locations",
+    url:
+      "https://trackapi.nutritionix.com/v2/locations?ll=${lat},{lon}&distance=50m&brand_id=${snack}&limit=1",
     method: "GET",
     beforeSend: function (xhr) {
       xhr.setRequestHeader("x-app-id", "e75b2779");
