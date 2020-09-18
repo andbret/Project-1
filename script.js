@@ -3,20 +3,20 @@ var snackInput = $("#snack");
 var bodyWeightInput = $("#weight");
 var submit = $("#submitButton");
 var zipCode = $("#zip");
+var naughty = $("#naughtyButton");
 
-var modalDlg = document.querySelector('#image-modal');
-var imageModalCloseBtn = document.querySelector('#image-modal-close');
+var modalDlg = document.querySelector("#image-modal");
+var imageModalCloseBtn = document.querySelector("#image-modal-close");
 
-imageModalCloseBtn.addEventListener('click', function () {
-    modalDlg.classList.remove('is-active');
+imageModalCloseBtn.addEventListener("click", function () {
+  modalDlg.classList.remove("is-active");
 });
-
 
 submit.click(function () {
   var zip = zipCode.val();
   var snack = snackInput.val();
   var bodyWeight = bodyWeightInput.val();
-//   modalDlg.classList.add('is-active');
+  //   modalDlg.classList.add('is-active');
   determineCalories(snack, bodyWeight, zip);
   console.log(zip);
   // apiCallcoords();
@@ -72,23 +72,25 @@ function apiCallHike(lat, lon, minimumTrailLength) {
     method: "GET",
   }).then(function (hikingData) {
     console.log(hikingData);
-    var trailId =[];
+    var trailId = [];
     for (i = 0; i < hikingData.trails.length; i++) {
       var selectedTrail = hikingData.trails[i]["length"];
-      if (selectedTrail >= minimumTrailLength && selectedTrail <= minimumTrailLength + 2) {
+      if (
+        selectedTrail >= minimumTrailLength &&
+        selectedTrail <= minimumTrailLength + 2
+      ) {
         // console.log(hikingData.trails[i]);
         trailId.push(hikingData.trails[i]);
       }
     }
-    
 
     //    this below is just stored for possible sorting logic
     // //    var trailsWithMinimumLength = hikingData.trails.filter(function(trail) {
-      // //         // trail is an Object in here
+    // //         // trail is an Object in here
 
-      // //         return trail.length >= minimumTrailLength;
+    // //         return trail.length >= minimumTrailLength;
 
-      //     });
+    //     });
 
     console.log(trailId[0]);
     $("#trailImage").attr("src", trailId[0].imgMedium);
@@ -97,14 +99,23 @@ function apiCallHike(lat, lon, minimumTrailLength) {
     $("#difficulty").text("difficulty: " + trailId[0].difficulty);
     $("#rating").text("rating: " + trailId[0].stars + "★");
     $("#length").text("length: " + trailId[0].length + " miles");
-    $("#ascent").text("ascent: " + trailId[0].ascent );
-    $("#descent").text("descent: " + trailId[0].descent );
+    $("#ascent").text("ascent: " + trailId[0].ascent);
+    $("#descent").text("descent: " + trailId[0].descent);
     $("#condition").text("condition: " + trailId[0].ascent);
-    modalDlg.classList.add('is-active');
+    modalDlg.classList.add("is-active");
   });
 }
 
-
- 
-
-  
+naughty.click(function (snack) {
+  $.ajax({
+    url: "https://trackapi.nutritionix.com/v2/locations",
+    method: "GET",
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("x-app-id", "e75b2779");
+      xhr.setRequestHeader("x-app-key", "0be5c122a01d2e0e81c70fd596e73aea");
+    },
+  }).then(function (getInfo) {
+    console.log(getInfo);
+    //var calories = getInfo.branded[0].nf_calories;
+  });
+});
