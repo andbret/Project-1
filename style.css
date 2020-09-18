@@ -29,11 +29,12 @@
   width: 100%;
 }
 html {
-  background-image: url("background11.jpeg");
+  background-image: url("background1.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: bottom;
   background-size: 100% auto;
+  background-size: cover;
 }
 .is-full-height {
   height: 90vh;
@@ -44,7 +45,7 @@ html {
   flex-direction: column;
 }
 .pill {
-  background-color: #76dabc;
+  background-color: #6ad6f1;
   padding: 8px;
   border-radius: 20px;
   color: azure;
@@ -72,10 +73,13 @@ html {
 }
 .card-foot {
   max-width: 40%;
-  margin: 20px;
+  margin: 10px;
 }
 .center {
   display: block;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: 20;
+}
+.lineSpace{
+  line-height: 2;
 }
