@@ -4,10 +4,19 @@ var bodyWeightInput = $("#weight");
 var submit = $("#submitButton");
 var zipCode = $("#zip");
 
+var modalDlg = document.querySelector('#image-modal');
+var imageModalCloseBtn = document.querySelector('#image-modal-close');
+
+imageModalCloseBtn.addEventListener('click', function () {
+    modalDlg.classList.remove('is-active');
+});
+
+
 submit.click(function () {
   var zip = zipCode.val();
   var snack = snackInput.val();
   var bodyWeight = bodyWeightInput.val();
+//   modalDlg.classList.add('is-active');
   determineCalories(snack, bodyWeight, zip);
   console.log(zip);
   // apiCallcoords();
@@ -63,21 +72,39 @@ function apiCallHike(lat, lon, minimumTrailLength) {
     method: "GET",
   }).then(function (hikingData) {
     console.log(hikingData);
-
+    var trailId =[];
     for (i = 0; i < hikingData.trails.length; i++) {
       var selectedTrail = hikingData.trails[i]["length"];
-      if (selectedTrail >= minimumTrailLength) {
-        console.log(hikingData.trails[i]);
+      if (selectedTrail >= minimumTrailLength && selectedTrail <= minimumTrailLength + 2) {
+        // console.log(hikingData.trails[i]);
+        trailId.push(hikingData.trails[i]);
       }
+    }
+    
 
-      //    this below is just stored for possible sorting logic
-
-      // //    var trailsWithMinimumLength = hikingData.trails.filter(function(trail) {
+    //    this below is just stored for possible sorting logic
+    // //    var trailsWithMinimumLength = hikingData.trails.filter(function(trail) {
       // //         // trail is an Object in here
 
       // //         return trail.length >= minimumTrailLength;
 
       //     });
-    }
+
+    console.log(trailId[0]);
+    $("#trailImage").attr("src", trailId[0].imgMedium);
+    $("#trailName").text(trailId[0].name + " is the perfect hike for you!");
+    $("#trailSummary").text(trailId[0].summary);
+    $("#difficulty").text("difficulty: " + trailId[0].difficulty);
+    $("#rating").text("rating: " + trailId[0].stars + "★");
+    $("#length").text("length: " + trailId[0].length + " miles");
+    $("#ascent").text("ascent: " + trailId[0].ascent );
+    $("#descent").text("descent: " + trailId[0].descent );
+    $("#condition").text("condition: " + trailId[0].ascent);
+    modalDlg.classList.add('is-active');
   });
 }
+
+
+ 
+
+  
