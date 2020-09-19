@@ -28,7 +28,7 @@ try{
   loadModal.classList.remove('is-active');
   snackTest.classList.add('is-danger');
   
-  $(".errorInput").append('<p class="help is-danger" id="error">This is not a valid food</p>');
+  $(".errorInput").append('<span class="help is-danger" id="error">&nbsp; This is not a valid food &nbsp;</span>');
 
   return;
 }
@@ -110,6 +110,9 @@ function apiCallHike(lat, lon, minimumTrailLength) {
       } else if (selectedTrail >= minimumTrailLength + 10) {
         trailId.push(hikingData.trails[i]);
       }
+      else if (selectedTrail >= minimumTrailLength + 50) {
+        trailId.push(hikingData.trails[i]);
+      }
     }
 
     // displaying all the information in the pop up modal
@@ -129,7 +132,7 @@ function apiCallHike(lat, lon, minimumTrailLength) {
     $("#trailLocation").text("Location: " + trailId[0].location);
     console.log(trailId[0].location);
     $("#trailType").text("Trail type: " + trailId[0].type);
-    $("#condition").html("Condition: " + trailId[0].conditionStaus);
+    $("#condition").text("Condition: " + trailId[0].conditionStaus);
     loadModal.classList.remove("is-active");
     modalDlg.classList.add("is-active");
   });

@@ -5,13 +5,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Walk it off</title>
+    <!-- link to the css document -->
     <link rel="stylesheet" href="style.css" />
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"> -->
+    <!-- link to an edited bulma css file -->
     <link rel="stylesheet" href="bulma.css" />
-    
-        <!-- Place your kit's code here -->
-        <script src="https://kit.fontawesome.com/e023c7c235.js" crossorigin="anonymous"></script><link href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css" media="all" rel="stylesheet"><link href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css" media="all" rel="stylesheet"><link href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all" rel="stylesheet">
-      
+
+    <!-- all css files for font awesome -->
+    <script src="https://kit.fontawesome.com/e023c7c235.js" crossorigin="anonymous"></script>
+    <link href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css" media="all"
+        rel="stylesheet">
+    <link href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css" media="all"
+        rel="stylesheet">
+    <link href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all" rel="stylesheet">
+
     <style>
         /* gotham fonts with multiple sources for browser compatability */
         @font-face {
@@ -33,57 +39,72 @@
                 url("gotham-black.ttf") format("truetype");
             /* Safari, Android, iOS */
         }
+        @font-face {
+            font-family: gotham-medium;
+            src: url("Gotham-Medium.otf") format("opentype"),
+                /* Original File */
+                url("Gotham-Medium.woff") format("woff"),
+                /* Modern Browsers */
+                url("Gotham-Medium.ttf") format("truetype");
+            /* Safari, Android, iOS */
+        }
     </style>
 </head>
+<!-- start of body -->
 
 <body class="background">
     <section class="section">
         <div class="container">
             <div class="columns is-variable is-2 is-full-height">
+                <!-- column that contains the title and explanatory text -->
                 <div class="column is-two-fifths">
+                    <!-- title -->
                     <h1 class="title" style="font-family:gotham-black; font-size: 5vw;">
                         Had a snack? Let's help you walk it off.
                     </h1>
-                    <p style="font-family:gotham-black; color: #eefbff;">
+                    <!-- explanatory text -->
+                    <p style="font-family:gotham-medium; color: #eefbff;">
                         Enter in the snack you ate, your body weight and zipcode, and we will provide you with a local
                         hiking spot at an appropriate length, that will help you burn off those extra calories!
                     </p>
-                    
-                    
+
+                    <!-- empty column for spacing -->
                 </div>
                 <div class="column is-one-fifths">
 
                 </div>
+                <!-- column that contains the form group -->
                 <div class="column is-two-fifths is-full-height">
                     <div class="test">
                         <div class="field">
-                            <!-- <label class="label">Name</label> -->
+                            <!-- snack input field -->
                             <div class="control is-expanded errorInput">
                                 <input class="input  is-medium" type="text" placeholder="What was your snack?"
                                     id="snack">
                             </div>
                         </div>
-
+                        <!-- amount of snacks input field -->
                         <div class="field">
                             <div class="control is-expanded">
                                 <input class="input is-medium" type="text" placeholder="How many did you have?"
                                     id="amount">
                             </div>
                         </div>
+                        <!-- weight input field -->
                         <div class="field">
-                            <!-- <label class="label">Email</label> -->
                             <div class="control">
                                 <input class="input is-medium" type="text" placeholder="How much do you weigh?"
                                     id="weight">
                             </div>
                         </div>
+                        <!-- zip code input field -->
                         <div class="field">
-                            <!-- <label class="label">Email</label> -->
                             <div class="control">
                                 <input class="input is-medium" type="text" placeholder="What is your ZIP code?"
                                     id="zip">
                             </div>
                         </div>
+                        <!-- submit button -->
                         <p class="control is-expanded">
                             <button class="button is-info is-medium" id="submitButton">Submit</button>
                         </p>
@@ -92,106 +113,91 @@
             </div>
 
         </div>
-        </div>
-        </div>
-        </div>
+
     </section>
+    <!-- start of the modal code -->
     <div class="container" id="app">
         <div id="image-modal" class="modal">
+            <!-- sets the background color and transparency -->
             <div class="modal-background"></div>
             <div class="modal-content">
                 <div class="modal-card">
-                    <!-- <header class="modal-card-head">
-            <p class="modal-card-title">Modal title</p>
-          </header> -->
+                    <!-- code for whe it is visible -->
                     <div class="modal-card-body is-variable">
+                        <!-- places the image for the determined trail -->
                         <div class="card-image">
-
-                            <img id="trailImage" alt="Girl in a jacket" width="1000" height="300">
-                            <img class="image">
+                            <img style="width: 100%; height: 100%; object-fit: cover; max-height: 250px;" id="trailImage" alt="Image of the trail">
+                            </img>
                         </div>
+                        <!-- adds a margin for the content -->
                         <div class="padding">
-                            <p style="font-family:gotham-black; font-size: 18px;" id="trailName">
-
+                            <!-- trail name -->
+                            <p style="font-family:gotham-black; font-size: 18px;" id="trailName"></p>
+                            <!-- trail summary -->
+                            <p style="font-family:gotham-medium; font-size: 16px;" id="trailSummary" class="explanation">
                             </p>
-                            <p style="font-family:gotham-book; font-size: 16px;" id="trailSummary" class="explanation">
-
-                            </p>
+                            <!-- line break -->
                             <hr>
+                            <!-- columns for pills -->
                             <div class="columns">
                                 <div class="column is-half">
+                                    <!-- displays the difficulty -->
                                     <span style="font-family:gotham-black; font-size: 16px;" id="difficulty"
-                                        class="pill">
-                                        &nbsp;&nbsp;
-                                    </span>
+                                        class="pill"></span>
                                 </div>
                                 <div class="column is-half">
-                                    <span style="font-family:gotham-black; font-size: 16px;" id="rating" class="pill">
-                                        &nbsp;&nbsp;
-                                    </span>
+                                    <!-- displays the rating -->
+                                    <span style="font-family:gotham-black; font-size: 16px;" id="rating"
+                                        class="pill"></span>
                                 </div>
-               
                             </div>
-                            <!-- <p style="font-family:gotham-book; font-size: 14px;" class="summary">
-                            It will take 8 miles to burn off all 500 calories from that donut.
-                        </p> -->
-                        
-                        <div class="lineSpace">
-                            <span class="fas fa-map-marker-alt">
-                                <span style="font-family:gotham-book; font-size: 16px;" id="trailLocation">
-                                    </span>
+                            <!-- displays trail data and icons -->
+                            <div class="lineSpace">
+                                <span class="fas fa-map-marker-alt">
+                                    <span style="font-family:gotham-book; font-size: 16px;" id="trailLocation"></span>
                                 </span><br>
 
+                                <span class="fas fa-mountain">
+                                    <span style="font-family:gotham-book; font-size: 16px;" id="trailType"></span>
+                                </span><br>
 
-                            <span class="fas fa-mountain">
-                            <span style="font-family:gotham-book; font-size: 16px;" id="trailType">
-                                </span>
-                            </span><br>
-
-                            <span class="fas fa-hiking">
-                                <span style="font-family:gotham-book; font-size: 16px;" id="length">
-                                    </span>
+                                <span class="fas fa-hiking">
+                                    <span style="font-family:gotham-book; font-size: 16px;" id="length"></span>
                                 </span><br>
 
                                 <span class="fas fa-cloud-sun-rain">
-                                    <span style="font-family:gotham-book; font-size: 16px;" id="condition">
-                                        </span>
-                                    </span><br>
-
-                                <!-- <i class="fas fa-map-marker-alt"></i> -->
-                            </div>  
-                       
-
-                            <br></br>
-                            <!-- <button class="button is-success">Save changes</button>
-                                <button class="button">Cancel</button> -->
-
+                                    <span style="font-family:gotham-book; font-size: 16px;" id="condition"></span>
+                                </span><br>
+                            </div>
+                            
                         </div>
+                        <!-- footer content that gives credit to the APIs -->
                         <footer class="card-footer">
-                            <img class="card-foot" src="logoHex2.svg" />
-                            <img class="card-foot" src="NutritionixAPI_hires_flat.png" />
+                            <img class="card-foot" alt="Logo for the All Trails API" src="logoHex2.svg" />
+                            <img class="card-foot" alt="Logo for the Nutritionx API" src="NutritionixAPI_hires_flat.png" />
                         </footer>
                     </div>
 
                 </div>
             </div>
+            <!-- the "x" that closes the modal -->
             <button id="image-modal-close" class="modal-close"></button>
         </div>
     </div>
 
-
+<!-- creates the loading screen -->
     <div id="loading-modal" class="modal center">
         <div class="modal-background"></div>
         <div class="modal-content">
 
-            <img class="center" src="loading.svg" alt="">
+            <img class="center" src="loading.svg" alt="Loading screen">
 
         </div>
 
     </div>
 
 
-
+<!-- javascript and jquery scripts -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
 </body>
