@@ -62,7 +62,7 @@ html {
 .center {
   display: block;
   margin-left: auto;
-  margin-right: 20;
+  margin-right: auto;
 }
 .lineSpace{
   line-height: 2;
