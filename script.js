@@ -124,11 +124,12 @@ function apiCallHike(lat, lon, minimumTrailLength) {
     $("#trailName").text(trailId[0].name + " is the perfect hike for you!");
     $("#trailSummary").text(trailId[0].summary);
     $("#difficulty").text("difficulty: " + trailId[0].difficulty);
-    $("#rating").text("rating: " + trailId[0].stars + "★");
-    $("#length").text("length: " + trailId[0].length + " miles");
-    $("#ascent").text("ascent: " + trailId[0].ascent);
-    $("#descent").text("descent: " + trailId[0].descent);
-    $("#condition").text("condition: " + trailId[0].condition);
+    $("#rating").text("Rating: " + trailId[0].stars + "★");
+    $("#length").text("Length: " + trailId[0].length + " miles");
+    $("#trailLocation").text("Location: " + trailId[0].location);
+    console.log(trailId[0].location);
+    $("#trailType").text("Trail type: " + trailId[0].type);
+    $("#condition").html("Condition: " + trailId[0].conditionStaus);
     loadModal.classList.remove("is-active");
     modalDlg.classList.add("is-active");
   });
