@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="style.css" />
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"> -->
     <link rel="stylesheet" href="bulma.css" />
+    
+        <!-- Place your kit's code here -->
+        <script src="https://kit.fontawesome.com/e023c7c235.js" crossorigin="anonymous"></script><link href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css" media="all" rel="stylesheet"><link href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css" media="all" rel="stylesheet"><link href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all" rel="stylesheet">
+      
     <style>
         /* gotham fonts with multiple sources for browser compatability */
         @font-face {
@@ -36,16 +40,21 @@
     <section class="section">
         <div class="container">
             <div class="columns is-variable is-2 is-full-height">
-                <div class="column is-half">
+                <div class="column is-two-fifths">
                     <h1 class="title" style="font-family:gotham-black; font-size: 5vw;">
                         Had a snack? Let's help you walk it off.
                     </h1>
-                    <p style="font-family:gotham-book;">
-                        Enter in the snack you ate, your body weight and zipcode, and we will provide you with a local hiking spot at an appropriate length, that will help you burn off those extra calories!
+                    <p style="font-family:gotham-black; color: #eefbff;">
+                        Enter in the snack you ate, your body weight and zipcode, and we will provide you with a local
+                        hiking spot at an appropriate length, that will help you burn off those extra calories!
                     </p>
-                 
+                    
+                    
                 </div>
-                <div class="column is-half is-full-height">
+                <div class="column is-one-fifths">
+
+                </div>
+                <div class="column is-two-fifths is-full-height">
                     <div class="test">
                         <div class="field">
                             <!-- <label class="label">Name</label> -->
@@ -80,12 +89,12 @@
                         </p>
                     </div>
                 </div>
-              </div>
-              
             </div>
-          </div>
+
         </div>
-      </div>
+        </div>
+        </div>
+        </div>
     </section>
     <div class="container" id="app">
         <div id="image-modal" class="modal">
@@ -105,39 +114,54 @@
                             <p style="font-family:gotham-black; font-size: 18px;" id="trailName">
 
                             </p>
-                            <p style="font-family:gotham-book;" id="trailSummary" class="explanation">
+                            <p style="font-family:gotham-book; font-size: 16px;" id="trailSummary" class="explanation">
 
                             </p>
                             <hr>
                             <div class="columns">
                                 <div class="column is-half">
-                                    <span style="font-family:gotham-black; font-size: 14px;" id="difficulty"
+                                    <span style="font-family:gotham-black; font-size: 16px;" id="difficulty"
                                         class="pill">
                                         &nbsp;&nbsp;
                                     </span>
                                 </div>
                                 <div class="column is-half">
-                                    <span style="font-family:gotham-black; font-size: 14px;" id="rating" class="pill">
+                                    <span style="font-family:gotham-black; font-size: 16px;" id="rating" class="pill">
                                         &nbsp;&nbsp;
                                     </span>
                                 </div>
+               
                             </div>
                             <!-- <p style="font-family:gotham-book; font-size: 14px;" class="summary">
                             It will take 8 miles to burn off all 500 calories from that donut.
                         </p> -->
-                            <br>
-                            <p style="font-family:gotham-book; font-size: 14px;" id="length">
+                        
+                        <div class="lineSpace">
+                            <span class="fas fa-map-marker-alt">
+                                <span style="font-family:gotham-book; font-size: 16px;" id="trailLocation">
+                                    </span>
+                                </span><br>
 
-                            </p>
-                            <p style="font-family:gotham-book; font-size: 14px;" id="ascent">
 
-                            </p>
-                            <p style="font-family:gotham-book; font-size: 14px;" id="descent">
+                            <span class="fas fa-mountain">
+                            <span style="font-family:gotham-book; font-size: 16px;" id="trailType">
+                                </span>
+                            </span><br>
 
-                            </p>
-                            <p style="font-family:gotham-book; font-size: 14px;" id="condition">
+                            <span class="fas fa-hiking">
+                                <span style="font-family:gotham-book; font-size: 16px;" id="length">
+                                    </span>
+                                </span><br>
 
-                            </p>
+                                <span class="fas fa-cloud-sun-rain">
+                                    <span style="font-family:gotham-book; font-size: 16px;" id="condition">
+                                        </span>
+                                    </span><br>
+
+                                <!-- <i class="fas fa-map-marker-alt"></i> -->
+                            </div>  
+                       
+
                             <br></br>
                             <!-- <button class="button is-success">Save changes</button>
                                 <button class="button">Cancel</button> -->
@@ -159,12 +183,12 @@
     <div id="loading-modal" class="modal center">
         <div class="modal-background"></div>
         <div class="modal-content">
-    
+
             <img class="center" src="loading.svg" alt="">
-        
+
         </div>
-    
-      </div>
+
+    </div>
 
 
 
