@@ -133,7 +133,3 @@ function apiCallHike(lat, lon, minimumTrailLength) {
     modalDlg.classList.add("is-active");
   });
 }
-
-
-
-
