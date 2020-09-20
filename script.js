@@ -52,9 +52,6 @@ try{
     amountTest.classList.add('is-danger');
     
     $(".errorInput2").append('<span class="help is-danger" id="error2">&nbsp; Only enter a number &nbsp;</span>');
-  }else 
-  {
-    loadModal.classList.add('is-active');
   }
   
   if((Number.isInteger(weightNumber))=== false){
@@ -62,20 +59,18 @@ try{
       weightTest.classList.add('is-danger');
       
       $(".errorInput3").append('<span class="help is-danger" id="error3">&nbsp; Only enter a number &nbsp;</span>');
-  }else{
-  
-    loadModal.classList.add('is-active');
   }
   if(((Number.isInteger(zipNumber))=== false) || (zip.length != 5)){
     loadModal.classList.remove('is-active');
     zipTest.classList.add('is-danger');
     
     $(".errorInput4").append('<span class="help is-danger" id="error4">&nbsp; Enter a valid ZIP code &nbsp;</span>');
-  }else{
-  
-  loadModal.classList.add('is-active');
   }
-  
+  // if(((Number.isInteger(weightNumber))=== false) || ((Number.isInteger(zipNumber))=== false) || ((Number.isInteger(amountNumber))=== false)){
+  //   loadModal.classList.remove('is-active');
+  // }else{
+    
+  // }
   return;
 }
 console.log(amount);
@@ -87,31 +82,21 @@ if((Number.isInteger(amountNumber))=== false){
   loadModal.classList.remove('is-active');
   amountTest.classList.add('is-danger');
   
-  $(".errorInput2").append('<span class="help is-danger" id="error">&nbsp; Only enter a number &nbsp;</span>');
-}else 
-{
-  loadModal.classList.add('is-active');
+  $(".errorInput2").append('<span class="help is-danger" id="error2">&nbsp; Only enter a number &nbsp;</span>');
 }
 
 if((Number.isInteger(weightNumber))=== false){
     loadModal.classList.remove('is-active');
     weightTest.classList.add('is-danger');
     
-    $(".errorInput3").append('<span class="help is-danger" id="error">&nbsp; Only enter a number &nbsp;</span>');
-}else{
-
-  loadModal.classList.add('is-active');
+    $(".errorInput3").append('<span class="help is-danger" id="error3">&nbsp; Only enter a number &nbsp;</span>');
 }
 if(((Number.isInteger(zipNumber))=== false) || (zip.length != 5)){
   loadModal.classList.remove('is-active');
   zipTest.classList.add('is-danger');
   
-  $(".errorInput4").append('<span class="help is-danger" id="error">&nbsp; Enter a valid ZIP code &nbsp;</span>');
-}else{
-
-loadModal.classList.add('is-active');
-}
-});
+  $(".errorInput4").append('<span class="help is-danger" id="error4">&nbsp; Enter a valid ZIP code &nbsp;</span>');
+}});
 
 async function determineCalories(snack, bodyWeight, zip, amount) {
   console.log(zip);
