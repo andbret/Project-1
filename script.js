@@ -193,8 +193,24 @@ function apiCallHike(lat, lon, minimumTrailLength) {
 
     // displaying all the information in the pop up modal
     console.log(trailId[0]);
-    var trailIMG = hikingData.trails[0]["imgMedium"];
+    
     console.log(trailIMG);
+    if (hikingData.trails[0] === undefined) {
+      console.log("TEESSSTTTT");
+      $("#trailImage").attr("src", "noImage.jpg");
+      $("#trailName").html("You need to walk "+minimumTrailLength+" miles, which is so far that we can't find you a trail.");
+      $("#trailSummary").text("You really shouldn't snack that much.");
+      $("#difficulty").html("&nbsp; Difficulty: impossible &nbsp;");
+      $("#rating").html("&nbsp; Rating: 0★ &nbsp;");
+      $("#length").text("Length: too long");
+      $("#trailLocation").text("Location: try a gym");
+      $("#trailType").text("Trail type: treadmill");
+      $("#condition").text("Condition: unknown");
+      loadModal.classList.remove("is-active");
+      modalDlg.classList.add("is-active");
+    }
+    else{
+      var trailIMG = hikingData.trails[0]["imgMedium"];
     if (trailIMG === "") {
       $("#trailImage").attr("src", "noImage.jpg");
     } else {
@@ -215,6 +231,7 @@ function apiCallHike(lat, lon, minimumTrailLength) {
     $("#condition").text("Condition: " + trailId[0].conditionStaus);
     loadModal.classList.remove("is-active");
     modalDlg.classList.add("is-active");
+  }
   });
 }
 
