@@ -6,35 +6,109 @@ var modalDlg = document.querySelector("#image-modal");
 var loadModal = document.querySelector("#loading-modal");
 var imageModalCloseBtn = document.querySelector("#image-modal-close");
 var snackTest = document.querySelector("#snack");
+var amountTest = document.querySelector("#amount");
 var amountInput = $("#amount");
+var weightTest = document.querySelector("#weight");
+var zipTest = document.querySelector("#zip");
 var elementExists = document.getElementById("#error");
+var clearButton = document.getElementById("#clearButton");
 
-imageModalCloseBtn.addEventListener('click', function () {
-    modalDlg.classList.remove('is-active');
-
+imageModalCloseBtn.addEventListener("click", function () {
+  modalDlg.classList.remove("is-active");
 });
 
 submit.click(async function () {
-  snackTest.classList.remove('is-danger');
-  $("#error").remove()
-  loadModal.classList.add('is-active');
+  localStorage.removeItem("todos");
+  $("#clearButton").remove();
+  snackTest.classList.remove("is-danger");
+  $("#error").remove();
+  amountTest.classList.remove("is-danger");
+  $("#error2").remove();
+  weightTest.classList.remove("is-danger");
+  $("#error3").remove();
+  zipTest.classList.remove("is-danger");
+  $("#error4").remove();
+  loadModal.classList.add("is-active");
   var zip = zipCode.val();
   var snack = snackInput.val();
   var bodyWeight = bodyWeightInput.val();
   var amount = amountInput.val();
-try{
-  await determineCalories(snack, bodyWeight, zip, amount);
-} catch (error){
-  loadModal.classList.remove('is-active');
-  snackTest.classList.add('is-danger');
-  
-  $(".errorInput").append('<span class="help is-danger" id="error">&nbsp; This is not a valid food &nbsp;</span>');
 
-  return;
-}
+  try {
+    await determineCalories(snack, bodyWeight, zip, amount);
+  } catch (error) {
+    loadModal.classList.remove("is-active");
+    snackTest.classList.add("is-danger");
 
-  loadModal.classList.add('is-active');
+    $(".errorInput").append(
+      '<span class="help is-danger" id="error">&nbsp; This is not a valid food &nbsp;</span>'
+    );
+    var amountNumber = parseInt(amount);
+    var weightNumber = parseInt(bodyWeight);
+    var zipNumber = parseInt(zip);
+    console.log(Number.isInteger(amountNumber));
+    if (Number.isInteger(amountNumber) === false) {
+      loadModal.classList.remove("is-active");
+      amountTest.classList.add("is-danger");
 
+      $(".errorInput2").append(
+        '<span class="help is-danger" id="error2">&nbsp; Only enter a number &nbsp;</span>'
+      );
+    }
+
+    if (Number.isInteger(weightNumber) === false) {
+      loadModal.classList.remove("is-active");
+      weightTest.classList.add("is-danger");
+
+      $(".errorInput3").append(
+        '<span class="help is-danger" id="error3">&nbsp; Only enter a number &nbsp;</span>'
+      );
+    }
+    if (Number.isInteger(zipNumber) === false || zip.length != 5) {
+      loadModal.classList.remove("is-active");
+      zipTest.classList.add("is-danger");
+
+      $(".errorInput4").append(
+        '<span class="help is-danger" id="error4">&nbsp; Enter a valid ZIP code &nbsp;</span>'
+      );
+    }
+    // if(((Number.isInteger(weightNumber))=== false) || ((Number.isInteger(zipNumber))=== false) || ((Number.isInteger(amountNumber))=== false)){
+    //   loadModal.classList.remove('is-active');
+    // }else{
+
+    // }
+    return;
+  }
+  console.log(amount);
+  var amountNumber = parseInt(amount);
+  var weightNumber = parseInt(bodyWeight);
+  var zipNumber = parseInt(zip);
+  console.log(Number.isInteger(amountNumber));
+  if (Number.isInteger(amountNumber) === false) {
+    loadModal.classList.remove("is-active");
+    amountTest.classList.add("is-danger");
+
+    $(".errorInput2").append(
+      '<span class="help is-danger" id="error2">&nbsp; Only enter a number &nbsp;</span>'
+    );
+  }
+
+  if (Number.isInteger(weightNumber) === false) {
+    loadModal.classList.remove("is-active");
+    weightTest.classList.add("is-danger");
+
+    $(".errorInput3").append(
+      '<span class="help is-danger" id="error3">&nbsp; Only enter a number &nbsp;</span>'
+    );
+  }
+  if (Number.isInteger(zipNumber) === false || zip.length != 5) {
+    loadModal.classList.remove("is-active");
+    zipTest.classList.add("is-danger");
+
+    $(".errorInput4").append(
+      '<span class="help is-danger" id="error4">&nbsp; Enter a valid ZIP code &nbsp;</span>'
+    );
+  }
 });
 
 async function determineCalories(snack, bodyWeight, zip, amount) {
@@ -46,25 +120,24 @@ async function determineCalories(snack, bodyWeight, zip, amount) {
       xhr.setRequestHeader("x-app-id", "e75b2779");
       xhr.setRequestHeader("x-app-key", "0be5c122a01d2e0e81c70fd596e73aea");
     },
-
   });
 
-    console.log(getInfo);
+  console.log(getInfo);
 
-    if(!getInfo.branded.length){
-      console.log("here")
-      throw new Error("not a valid food");
-    }
+  if (!getInfo.branded.length) {
+    console.log("here");
+    throw new Error("not a valid food");
+  }
 
-    var calories = getInfo.branded[0].nf_calories * amount;
+  var calories = getInfo.branded[0].nf_calories * amount;
 
-    console.log(getInfo.branded[0]);
+  console.log(getInfo.branded[0]);
 
-    var miles = (calories * 1.37) / bodyWeight;
-    var minimumTrailLength = Math.round(miles);
-    console.log(minimumTrailLength);
+  var miles = (calories * 1.37) / bodyWeight;
+  var minimumTrailLength = Math.round(miles);
+  console.log(minimumTrailLength);
 
-    apiCallcoords(zip, minimumTrailLength);
+  apiCallcoords(zip, minimumTrailLength);
 }
 
 function apiCallcoords(zip, minimumTrailLength) {
@@ -111,31 +184,87 @@ function apiCallHike(lat, lon, minimumTrailLength) {
         trailId.push(hikingData.trails[i]);
       } else if (selectedTrail >= minimumTrailLength + 50) {
         trailId.push(hikingData.trails[i]);
-      } else if (selectedTrail <= minimumTrailLength); {
+      } else if (selectedTrail <= minimumTrailLength);
+      {
         trailId.push(hikingData.trails[i]);
       }
-
     }
 
     // displaying all the information in the pop up modal
-    console.log(trailId[0]);
-    var trailIMG = hikingData.trails[0]["imgMedium"];
+    // var forSearch = trailId[0].name;
+
     console.log(trailIMG);
-    if (trailIMG === "") {
+    if (hikingData.trails[0] === undefined) {
+      console.log("TEESSSTTTT");
       $("#trailImage").attr("src", "noImage.jpg");
+      $("#trailName").html(
+        "You need to walk " +
+          minimumTrailLength +
+          " miles, which is so far that we can't find you a trail."
+      );
+      $("#trailSummary").text("You really shouldn't snack that much.");
+      $("#difficulty").html("&nbsp; Difficulty: impossible &nbsp;");
+      $("#rating").html("&nbsp; Rating: 0★ &nbsp;");
+      $("#length").text("Length: too long");
+      $("#trailLocation").text("Location: try a gym");
+      $("#trailType").text("Trail type: treadmill");
+      $("#condition").text("Condition: unknown");
+      loadModal.classList.remove("is-active");
+      modalDlg.classList.add("is-active");
     } else {
-      $("#trailImage").attr("src", trailId[0].imgMedium);
+      var trailIMG = hikingData.trails[0]["imgMedium"];
+      if (trailIMG === "") {
+        $("#trailImage").attr("src", "noImage.jpg");
+      } else {
+        $("#trailImage").attr("src", trailId[0].imgMedium);
+      }
+      if (minimumTrailLength === 1) {
+        $("#trailName").html(
+          "You need to walk " +
+            minimumTrailLength +
+            " mile, so " +
+            trailId[0].name +
+            " is the perfect hike for you!"
+        );
+      } else if (minimumTrailLength > 1) {
+        $("#trailName").html(
+          "You need to walk " +
+            minimumTrailLength +
+            " miles, so " +
+            trailId[0].name +
+            " is the perfect hike for you!"
+        );
+      }
+      $("#trailSummary").text(trailId[0].summary);
+      $("#difficulty").html(
+        "&nbsp; Difficulty: " + trailId[0].difficulty + " &nbsp;"
+      );
+      $("#rating").html("&nbsp; Rating: " + trailId[0].stars + "★ &nbsp;");
+      $("#length").text("Length: " + trailId[0].length + " miles");
+      $("#trailLocation").text("Location: " + trailId[0].location);
+      console.log(trailId[0].location);
+      $("#trailType").text("Trail type: " + trailId[0].type);
+      $("#condition").text("Condition: " + trailId[0].conditionStaus);
+      $(".mapButton").append(
+        '<button class="button is-info is-medium maps-link" id="clearButton" onclick="mapsSelector()">Get Directions</button>'
+      );
+      localStorage.setItem("todos", JSON.stringify(trailId[0].name));
+      loadModal.classList.remove("is-active");
+      modalDlg.classList.add("is-active");
     }
-    $("#trailName").text(trailId[0].name + " is the perfect hike for you!");
-    $("#trailSummary").text(trailId[0].summary);
-    $("#difficulty").html("&nbsp; Difficulty: " + trailId[0].difficulty+" &nbsp;");
-    $("#rating").html("&nbsp; Rating: " + trailId[0].stars + "★ &nbsp;");
-    $("#length").text("Length: " + trailId[0].length + " miles");
-    $("#trailLocation").text("Location: " + trailId[0].location);
-    console.log(trailId[0].location);
-    $("#trailType").text("Trail type: " + trailId[0].type);
-    $("#condition").text("Condition: " + trailId[0].conditionStaus);
-    loadModal.classList.remove("is-active");
-    modalDlg.classList.add("is-active");
   });
+}
+// code that takes the user to their map, this code was taken from https://codepen.io/colinlord/pen/jWbELE
+function mapsSelector() {
+  var forSearch = JSON.parse(localStorage.getItem("todos"));
+
+  if (
+    /* if we're on iOS, open in Apple Maps */
+    navigator.platform.indexOf("iPhone") != -1 ||
+    navigator.platform.indexOf("iPod") != -1 ||
+    navigator.platform.indexOf("iPad") != -1
+  )
+    window.open("maps://maps.google.com/maps?daddr=" + forSearch);
+  /* else use Google */ else
+    window.open("https://maps.google.com/maps?daddr=" + forSearch);
 }
