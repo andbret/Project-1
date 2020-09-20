@@ -6,7 +6,10 @@ var modalDlg = document.querySelector("#image-modal");
 var loadModal = document.querySelector("#loading-modal");
 var imageModalCloseBtn = document.querySelector("#image-modal-close");
 var snackTest = document.querySelector("#snack");
+var amountTest = document.querySelector("#amount");
 var amountInput = $("#amount");
+var weightTest = document.querySelector("#weight");
+var zipTest = document.querySelector("#zip");
 var elementExists = document.getElementById("#error");
 
 imageModalCloseBtn.addEventListener('click', function () {
@@ -17,11 +20,22 @@ imageModalCloseBtn.addEventListener('click', function () {
 submit.click(async function () {
   snackTest.classList.remove('is-danger');
   $("#error").remove()
+  amountTest.classList.remove('is-danger');
+  $("#error2").remove()
+  weightTest.classList.remove('is-danger');
+  $("#error3").remove()
+  zipTest.classList.remove('is-danger');
+  $("#error4").remove()
   loadModal.classList.add('is-active');
   var zip = zipCode.val();
   var snack = snackInput.val();
   var bodyWeight = bodyWeightInput.val();
   var amount = amountInput.val();
+ 
+  
+ 
+   
+  
 try{
   await determineCalories(snack, bodyWeight, zip, amount);
 } catch (error){
@@ -29,12 +43,74 @@ try{
   snackTest.classList.add('is-danger');
   
   $(".errorInput").append('<span class="help is-danger" id="error">&nbsp; This is not a valid food &nbsp;</span>');
-
+  var amountNumber = parseInt(amount)
+  var weightNumber = parseInt(bodyWeight)
+  var zipNumber = parseInt(zip)
+  console.log(Number.isInteger(amountNumber));
+  if((Number.isInteger(amountNumber))=== false){
+    loadModal.classList.remove('is-active');
+    amountTest.classList.add('is-danger');
+    
+    $(".errorInput2").append('<span class="help is-danger" id="error2">&nbsp; Only enter a number &nbsp;</span>');
+  }else 
+  {
+    loadModal.classList.add('is-active');
+  }
+  
+  if((Number.isInteger(weightNumber))=== false){
+      loadModal.classList.remove('is-active');
+      weightTest.classList.add('is-danger');
+      
+      $(".errorInput3").append('<span class="help is-danger" id="error3">&nbsp; Only enter a number &nbsp;</span>');
+  }else{
+  
+    loadModal.classList.add('is-active');
+  }
+  if(((Number.isInteger(zipNumber))=== false) || (zip.length != 5)){
+    loadModal.classList.remove('is-active');
+    zipTest.classList.add('is-danger');
+    
+    $(".errorInput4").append('<span class="help is-danger" id="error4">&nbsp; Enter a valid ZIP code &nbsp;</span>');
+  }else{
+  
+  loadModal.classList.add('is-active');
+  }
+  
   return;
 }
+console.log(amount);
+var amountNumber = parseInt(amount)
+var weightNumber = parseInt(bodyWeight)
+var zipNumber = parseInt(zip)
+console.log(Number.isInteger(amountNumber));
+if((Number.isInteger(amountNumber))=== false){
+  loadModal.classList.remove('is-active');
+  amountTest.classList.add('is-danger');
+  
+  $(".errorInput2").append('<span class="help is-danger" id="error">&nbsp; Only enter a number &nbsp;</span>');
+}else 
+{
+  loadModal.classList.add('is-active');
+}
+
+if((Number.isInteger(weightNumber))=== false){
+    loadModal.classList.remove('is-active');
+    weightTest.classList.add('is-danger');
+    
+    $(".errorInput3").append('<span class="help is-danger" id="error">&nbsp; Only enter a number &nbsp;</span>');
+}else{
 
   loadModal.classList.add('is-active');
+}
+if(((Number.isInteger(zipNumber))=== false) || (zip.length != 5)){
+  loadModal.classList.remove('is-active');
+  zipTest.classList.add('is-danger');
+  
+  $(".errorInput4").append('<span class="help is-danger" id="error">&nbsp; Enter a valid ZIP code &nbsp;</span>');
+}else{
 
+loadModal.classList.add('is-active');
+}
 });
 
 async function determineCalories(snack, bodyWeight, zip, amount) {
@@ -124,7 +200,11 @@ function apiCallHike(lat, lon, minimumTrailLength) {
     } else {
       $("#trailImage").attr("src", trailId[0].imgMedium);
     }
-    $("#trailName").text(trailId[0].name + " is the perfect hike for you!");
+    if(minimumTrailLength===1){
+    $("#trailName").html("You need to walk "+minimumTrailLength+" mile, so "+trailId[0].name + " is the perfect hike for you!");
+  } else if(minimumTrailLength>1){
+    $("#trailName").html("You need to walk "+minimumTrailLength+" miles, so "+trailId[0].name + " is the perfect hike for you!");
+  }
     $("#trailSummary").text(trailId[0].summary);
     $("#difficulty").html("&nbsp; Difficulty: " + trailId[0].difficulty+" &nbsp;");
     $("#rating").html("&nbsp; Rating: " + trailId[0].stars + "★ &nbsp;");
