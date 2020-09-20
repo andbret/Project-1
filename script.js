@@ -11,6 +11,7 @@ var amountInput = $("#amount");
 var weightTest = document.querySelector("#weight");
 var zipTest = document.querySelector("#zip");
 var elementExists = document.getElementById("#error");
+var clearButton = document.getElementById("#clearButton");
 
 imageModalCloseBtn.addEventListener('click', function () {
     modalDlg.classList.remove('is-active');
@@ -18,6 +19,7 @@ imageModalCloseBtn.addEventListener('click', function () {
 });
 
 submit.click(async function () {
+  $("#clearButton").remove()
   snackTest.classList.remove('is-danger');
   $("#error").remove()
   amountTest.classList.remove('is-danger');
@@ -177,7 +179,8 @@ function apiCallHike(lat, lon, minimumTrailLength) {
     }
 
     // displaying all the information in the pop up modal
-    console.log(trailId[0]);
+    // var forSearch = trailId[0].name;
+    localStorage.setItem("todos", JSON.stringify(trailId[0].name));
     
     console.log(trailIMG);
     if (hikingData.trails[0] === undefined) {
@@ -214,11 +217,28 @@ function apiCallHike(lat, lon, minimumTrailLength) {
     console.log(trailId[0].location);
     $("#trailType").text("Trail type: " + trailId[0].type);
     $("#condition").text("Condition: " + trailId[0].conditionStaus);
+    $(".mapButton").append('<button class="button is-info is-medium maps-link" id="clearButton" onclick="mapsSelector()">Get Directions</button>');
     loadModal.classList.remove("is-active");
     modalDlg.classList.add("is-active");
+
   }
+  
   });
 }
+// code that takes the user to their map, this code was taken from https://codepen.io/colinlord/pen/jWbELE
+function mapsSelector() {
+  var forSearch = JSON.parse(localStorage.getItem("todos"));
+
+  if /* if we're on iOS, open in Apple Maps */
+    ((navigator.platform.indexOf("iPhone") != -1) || 
+     (navigator.platform.indexOf("iPod") != -1) || 
+     (navigator.platform.indexOf("iPad") != -1))
+    window.open("maps://maps.google.com/maps?daddr="+forSearch);
+
+  else /* else use Google */
+    window.open("https://maps.google.com/maps?daddr="+forSearch);
+}
+
 
 
 
