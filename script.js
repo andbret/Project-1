@@ -109,10 +109,12 @@ function apiCallHike(lat, lon, minimumTrailLength) {
         trailId.push(hikingData.trails[i]);
       } else if (selectedTrail >= minimumTrailLength + 10) {
         trailId.push(hikingData.trails[i]);
-      }
-      else if (selectedTrail >= minimumTrailLength + 50) {
+      } else if (selectedTrail >= minimumTrailLength + 50) {
+        trailId.push(hikingData.trails[i]);
+      } else if (selectedTrail <= minimumTrailLength); {
         trailId.push(hikingData.trails[i]);
       }
+
     }
 
     // displaying all the information in the pop up modal
