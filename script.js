@@ -19,6 +19,7 @@ imageModalCloseBtn.addEventListener('click', function () {
 });
 
 submit.click(async function () {
+  localStorage.removeItem("todos");
   $("#clearButton").remove()
   snackTest.classList.remove('is-danger');
   $("#error").remove()
@@ -180,7 +181,7 @@ function apiCallHike(lat, lon, minimumTrailLength) {
 
     // displaying all the information in the pop up modal
     // var forSearch = trailId[0].name;
-    localStorage.setItem("todos", JSON.stringify(trailId[0].name));
+    
     
     console.log(trailIMG);
     if (hikingData.trails[0] === undefined) {
@@ -218,6 +219,7 @@ function apiCallHike(lat, lon, minimumTrailLength) {
     $("#trailType").text("Trail type: " + trailId[0].type);
     $("#condition").text("Condition: " + trailId[0].conditionStaus);
     $(".mapButton").append('<button class="button is-info is-medium maps-link" id="clearButton" onclick="mapsSelector()">Get Directions</button>');
+    localStorage.setItem("todos", JSON.stringify(trailId[0].name));
     loadModal.classList.remove("is-active");
     modalDlg.classList.add("is-active");
 
