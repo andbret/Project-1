@@ -13,10 +13,10 @@ User Story:
 
 Usage:
     On the main webpage you should enter the snack that you ate, the quantity, your weight, and your zipcode. Then proceed to hit the submit button.
-<img src="mainpagescreenshot.png">
+<img src="landing_screen.png">
 
     You will then be prompted with a suggested hiking trail that is long enough to burn off the calories of whatever food you had to eat.
-<img src="suggestedhikingtrailscreen.png">
+<img src="suggested_trail_modal.png">
 
 Credits:
     Project Developers:
