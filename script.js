@@ -179,11 +179,7 @@ function apiCallHike(lat, lon, minimumTrailLength) {
       }
     }
 
-    // displaying all the information in the pop up modal
-    // var forSearch = trailId[0].name;
-    
-    
-    console.log(trailIMG);
+   
     if (hikingData.trails[0] === undefined) {
       console.log("TEESSSTTTT");
       $("#trailImage").attr("src", "noImage.jpg");
@@ -200,10 +196,12 @@ function apiCallHike(lat, lon, minimumTrailLength) {
     }
     else{
       var trailIMG = hikingData.trails[0]["imgMedium"];
+      console.log(trailIMG);
     if (trailIMG === "") {
       $("#trailImage").attr("src", "noImage.jpg");
     } else {
-      $("#trailImage").attr("src", trailId[0].imgMedium);
+      $("#trailImage").attr("src", trailIMG);
+      console.log(trailId[0].imgMedium);
     }
     if(minimumTrailLength===1){
     $("#trailName").html("You need to walk "+minimumTrailLength+" mile, so "+trailId[0].name + " is the perfect hike for you!");
